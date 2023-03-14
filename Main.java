@@ -3,9 +3,10 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
+        Scanner scanner = new Scanner(System.in);
         Padaria padaria_A = new Padaria();
         Padaria padaria_B = new Padaria();
-        Scanner scanner = new Scanner(System.in);
+        Estacionamento estacionamento = new Estacionamento();
 
         /*
         //set padaria A
@@ -33,13 +34,13 @@ public class Main {
 
         //set padaria A
         System.out.print("Digite o nome da padaria: ");
-        padaria_A.setNome(scanner.nextLine());
+        padaria_A.setNome(scanner.next());
 
         System.out.print("Digite o nome da dono: ");
-        padaria_A.setDono(scanner.nextLine());
+        padaria_A.setDono(scanner.next());
 
         System.out.print("Digite o endereco: ");
-        padaria_A.setEndereco(scanner.nextLine());
+        padaria_A.setEndereco(scanner.next());
 
         System.out.print("Digite as vendas mensais: ");
         padaria_A.setVendasMensais(scanner.nextFloat());
@@ -56,19 +57,19 @@ public class Main {
         System.out.print("Digite a quantidade de panelas: ");
         padaria_A.cozinha.setQtdePanelas(scanner.nextInt());
 
-        System.out.println();
+        System.out.print("\n");
         System.out.println(padaria_A);
 
 
         //set padaria B
         System.out.print("Digite o nome da padaria: ");
-        padaria_B.setNome(scanner.nextLine());
+        padaria_B.setNome(scanner.next());
 
         System.out.print("Digite o nome da dono: ");
-        padaria_B.setDono(scanner.nextLine());
+        padaria_B.setDono(scanner.next());
 
         System.out.print("Digite o endereco: ");
-        padaria_B.setEndereco(scanner.nextLine());
+        padaria_B.setEndereco(scanner.next());
 
         System.out.print("Digite as vendas mensais: ");
         padaria_B.setVendasMensais(scanner.nextFloat());
@@ -85,7 +86,10 @@ public class Main {
         System.out.print("Digite a quantidade de panelas: ");
         padaria_B.cozinha.setQtdePanelas(scanner.nextInt());
 
-        System.out.println();
+        System.out.print("\n");
         System.out.println(padaria_B);
+
+        estacionamento.insere();
+
     }
 }
