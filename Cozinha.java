@@ -1,20 +1,22 @@
 public class Cozinha {
 
-    //variaveis de instancia
     public int tiposRefeicao; //Atributo
     public int qtdePanelas; //Atributo
 
-    //construtor padrao(nao recebe parametros)
     public Cozinha(){
 
-        this.tiposRefeicao=0;
-        this.qtdePanelas=0;
+        this.tiposRefeicao = 0;
+        this.qtdePanelas = 0;
 
     }
 
-    //Metodos
+    public Cozinha(int tiposRefeicao, int qtdePanelas){
 
-    //tipos refeicao
+        this.tiposRefeicao = tiposRefeicao;
+        this.qtdePanelas = qtdePanelas;
+
+    }
+
     public int getTiposRefeicao(){
         return this.tiposRefeicao;
     }
@@ -22,7 +24,6 @@ public class Cozinha {
         this.tiposRefeicao = tiposRefeicao;
     }
 
-    //qtde Panelas
     public int getQtdePanelas(){
         return this.qtdePanelas;
     }
