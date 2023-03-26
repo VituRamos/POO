@@ -85,6 +85,9 @@ public class Padaria {
             this.qtdeFuncionarios = qtdeFuncionarios;
         }
 
+        public int getFuncionarioSort() {
+            return (int) (Math.random() * this.qtdeFuncionarios);
+        }
 
     @Override
         public String toString() {
