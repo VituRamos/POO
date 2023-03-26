@@ -1,18 +1,14 @@
-import java.util.Scanner;
-
 public class Padaria {
 
     Cozinha cozinha = new Cozinha();
 
-        //variaveis de instancia
-        public String nome; //Atributo
-        public String dono; //Atributo
-        public String endereco; //Atributo
-        public Float vendasMensais; //Atributo
-        public int qtdeMaxPaes; //Atributo
-        public int qtdeFuncionarios; //Atributo
+        public String nome;
+        public String dono;
+        public String endereco;
+        public Float vendasMensais;
+        public int qtdeMaxPaes;
+        public int qtdeFuncionarios;
 
-        //construtor padrao(nao recebe prametros
         public Padaria() {
 
             this.nome = " ";
@@ -21,70 +17,79 @@ public class Padaria {
             this.vendasMensais = 0f;
             this.qtdeMaxPaes = 0;
             this.qtdeFuncionarios = 0;
+            this.cozinha.tiposRefeicao = 0;
+            this.cozinha.qtdePanelas = 0;
+        }
+
+        public Padaria(String nome, String dono, String endereco, Float vendasMensais, int qtdeMaxPaes, int qtdeFuncionarios, Cozinha cozinha) {
+
+            this.nome = nome;
+            this.dono = dono;
+            this.endereco = endereco;
+            this.vendasMensais = vendasMensais;
+            this.qtdeMaxPaes = qtdeMaxPaes;
+            this.qtdeFuncionarios = qtdeFuncionarios;
+            this.cozinha.tiposRefeicao = cozinha.tiposRefeicao;
+            this.cozinha.qtdePanelas = cozinha.qtdePanelas;
+        }
+
+        public Padaria(String nome, String dono, String endereco, Float vendasMensais, int qtdeFuncionarios) {
+
+            this.nome = nome;
+            this.dono = dono;
+            this.endereco = endereco;
+            this.vendasMensais = vendasMensais;
+            this.qtdeFuncionarios = qtdeFuncionarios;
 
         }
 
-        //metodos
-
-        //nome
         public String getNome() {
             return this.nome;
         }
-
         public void setNome(String nome) {
             this.nome = nome;
         }
 
-        //dono
         public String getDono() {
             return this.dono;
         }
-
         public void setDono(String dono) {
             this.dono = dono;
         }
 
-        //endereco
         public String getEndereco() {
             return this.endereco;
         }
-
         public void setEndereco(String endereco) {
             this.endereco = endereco;
         }
 
-        //vendasMensais
         public Float getVendasMensais() {
             return this.vendasMensais;
         }
-
         public void setVendasMensais(Float vendasMensais) {
             this.vendasMensais = vendasMensais;
         }
 
-        //qtdeMaxPaes
         public int getQtdeMaxPaes() {
             return this.qtdeMaxPaes;
         }
-
         public void setQtdeMaxPaes(int qtdeMaxPaes) {
             this.qtdeMaxPaes = qtdeMaxPaes;
         }
 
-        //qtdeFuncionarios
         public int getQtdeFuncionarios() {
             return this.qtdeFuncionarios;
         }
-
         public void setQtdeFuncionarios(int qtdeFuncionarios) {
             this.qtdeFuncionarios = qtdeFuncionarios;
         }
 
 
-        @Override //passar por cima do comportamento padrao do metodo abaixo
+    @Override
         public String toString() {
 
-            return "Nome: " + this.getNome() + "\n" +
+            return "\nNome: " + this.getNome() + "\n" +
                     "Dono: " + this.getDono() + "\n" +
                     "Endereco: " + this.getEndereco() + "\n" +
                     "Vendas Mensais: " + this.getVendasMensais() + "\n" +
@@ -93,6 +98,6 @@ public class Padaria {
                     "Tipos de Refeicao: " + this.cozinha.getTiposRefeicao() + "\n" +
                     "Qtde de Panelas: " + this.cozinha.getQtdePanelas() + "\n";
 
-        }//toString
+        }
 
 }
