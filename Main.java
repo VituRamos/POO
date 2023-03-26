@@ -5,39 +5,18 @@ public class Main {
     public static void main(String[] args) throws ParseException {
 
         Scanner scanner = new Scanner(System.in);
+
         Padaria padaria_A = new Padaria();
         Padaria padaria_B = new Padaria();
         Estacionamento estacionamento = new Estacionamento();
+        Computador c = new Computador();
+        Lojinha lojinha = new Lojinha();
 
-        /*
-        //set padaria A
-        padaria_A.setNome("Cacetinho Morninho");
-        padaria_A.setDono("Claudio");
-        padaria_A.setEndereco("Rua Das Massas");
-        padaria_A.setVendasMensais(1000.5f);
-        padaria_A.setQtdeMaxPaes(150);
-        padaria_A.setQtdeFuncionarios(25);
-        padaria_A.cozinha.setTiposRefeicao(5);
-        padaria_A.cozinha.setQtdePanelas(25);
-        System.out.println(padaria_A);
 
-        //set padaria B
-        padaria_B.setNome("Cacetinho Quentinho");
-        padaria_B.setDono("Roberval");
-        padaria_B.setEndereco("Rua Das Massas");
-        padaria_B.setVendasMensais(1200.5f);
-        padaria_B.setQtdeMaxPaes(175);
-        padaria_B.setQtdeFuncionarios(30);
-        padaria_B.cozinha.setTiposRefeicao(7);
-        padaria_B.cozinha.setQtdePanelas(30);
-        System.out.println(padaria_B);
-        */
-
-        //set padaria A
         System.out.print("Digite o nome da padaria: ");
         padaria_A.setNome(scanner.next());
 
-        System.out.print("Digite o nome da dono: ");
+        System.out.print("Digite o nome do dono: ");
         padaria_A.setDono(scanner.next());
 
         System.out.print("Digite o endereco: ");
@@ -58,15 +37,13 @@ public class Main {
         System.out.print("Digite a quantidade de panelas: ");
         padaria_A.cozinha.setQtdePanelas(scanner.nextInt());
 
-        System.out.print("\n");
-        System.out.println(padaria_A);
+        System.out.println(padaria_A.toString());
 
 
-        //set padaria B
         System.out.print("Digite o nome da padaria: ");
         padaria_B.setNome(scanner.next());
 
-        System.out.print("Digite o nome da dono: ");
+        System.out.print("Digite o nome do dono: ");
         padaria_B.setDono(scanner.next());
 
         System.out.print("Digite o endereco: ");
@@ -87,10 +64,39 @@ public class Main {
         System.out.print("Digite a quantidade de panelas: ");
         padaria_B.cozinha.setQtdePanelas(scanner.nextInt());
 
-        System.out.print("\n");
-        System.out.println(padaria_B);
+        System.out.println(padaria_B.toString());
+
 
         estacionamento.insere();
+        System.out.print(estacionamento.toString());
+
+
+        c.setNome("comp1").setMarca("Intel").setData(1,1,2001);
+        System.out.println(c.toString());
+
+
+        System.out.print("Digite o nome da lojinha: ");
+        lojinha.setNome(scanner.next());
+
+        System.out.print("Digite o nome do dono: ");
+        lojinha.setDono(scanner.next());
+
+        System.out.print("Digite o endereco: ");
+        lojinha.setEndereco(scanner.next());
+
+        System.out.print("Digite as vendas mensais: ");
+        lojinha.setVendasMensais(scanner.nextFloat());
+
+        System.out.print("Digite a quantidade de funcionarios: ");
+        lojinha.setQtdeFuncionarios(scanner.nextInt());
+
+        System.out.print("Digite a quantidade de produtos vendidos: ");
+        lojinha.setQtdeprodutosVendidos(scanner.nextInt());
+
+        System.out.print("Digite a quantidade dos diferentes produtos: ");
+        lojinha.setTiposProdutos(scanner.nextInt());
+
+        System.out.print(lojinha.toString());
 
     }
 }
