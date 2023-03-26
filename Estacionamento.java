@@ -8,14 +8,12 @@ public class Estacionamento {
     Scanner scanner = new Scanner(System.in);
     SimpleDateFormat formatar = new SimpleDateFormat("HH:mm");
 
-    //variaveis de instancia
     public String tipoVeiculo;
     public String placa;
     public String entrada;
     public String saida;
     public Float valor;
 
-    //construtor padrao(nao recebe prametros
     public Estacionamento() {
 
         this.tipoVeiculo = " ";
@@ -26,9 +24,6 @@ public class Estacionamento {
 
     }
 
-    //Metodos
-
-    //tipo Veiculo
     public String getTipoVeiculo(){
         return this.tipoVeiculo;
     }
@@ -44,7 +39,6 @@ public class Estacionamento {
         this.placa = placa;
     }
 
-    //entrada
     public String getEntrada(){
         return this.entrada;
     }
@@ -52,7 +46,6 @@ public class Estacionamento {
         this.entrada = entrada;
     }
 
-    //saida
     public String getSaida(){
         return this.saida;
     }
@@ -60,7 +53,6 @@ public class Estacionamento {
         this.saida = saida;
     }
 
-    //valor
     public Float getValor(){
         return this.valor;
     }
@@ -83,38 +75,33 @@ public class Estacionamento {
         setSaida(scanner.nextLine());
 
         Date newEntrada = formatar.parse(entrada);
-        System.out.println("Nova entrada: " + formatar.format(newEntrada));
 
         Date newSaida = formatar.parse(saida);
-        System.out.println("Nova saida: " + formatar.format(newSaida));
 
         int dif = (int) ((newSaida.getTime() - newEntrada.getTime())/60000);
-        System.out.println("Diferenca: " + dif);
 
-        if (dif>0 & dif<30){
+        if (dif>0 && dif<30){
             this.setValor(0f);
 
-        } else if (dif>=30 & dif<60) {
+        }else if (dif>=30 && dif<60) {
             this.setValor(10f);
 
-        } else{
+        }else {
             this.setValor(20f);
 
-        }//If
+        }
 
-        System.out.println("Valor: " + getValor());
+    }
 
-    }//Insere
-
-    @Override //passar por cima do comportamento padrao do metodo abaixo
+    @Override
     public String toString() {
 
-        return "Tipo do veiculo: " + this.getTipoVeiculo() + "\n" +
+        return "\nTipo do veiculo: " + this.getTipoVeiculo() + "\n" +
                 "Placa: " + this.getPlaca() + "\n" +
                 "Horario de entrada: " + this.getEntrada() + "\n" +
                 "Horario de saida: " + this.getSaida() + "\n" +
-                "Valor a ser pago: " + this.getValor() + "\n";
+                "Valor a ser pago: R$" + this.getValor() + "\n";
 
-    }//toString
+    }
 
 }
