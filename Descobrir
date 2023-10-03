@@ -1,8 +1,0 @@
-public class Descobrir{
-
-    public int getAleatorio(Padaria padaria){
-            return (int) (Math.random() * padaria.getQtdeFuncionarios());
-    }
-
-}
-
