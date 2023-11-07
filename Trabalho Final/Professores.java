@@ -6,12 +6,12 @@ public class Professores{
     private String nomeProfessor;
     private Disciplinas disciplinaProfessor;
     private String CPF;
-    ArrayList<Professores> ListaProfessores = new ArrayList<>();
+    static ArrayList<Professores> ListaProfessores = new ArrayList<>();
 
     public Professores(String nomeProfessor,Disciplinas disciplinaProfessor, String CPF){
-        this.nomeProfessor = nomeProfessor;
-        this.disciplinaProfessor = disciplinaProfessor;
-        this.CPF = CPF;
+        setNomeProfessor(nomeProfessor);
+        setDisciplinaProfessor(disciplinaProfessor);
+        setCPF(CPF);
     }
 
     //Getters e Setters
@@ -40,7 +40,7 @@ public class Professores{
     }
 
     public String toString(){
-        return "Nome: " + getNomeProfessor() + "Disciplina: " + getDisciplinaProfessor() + "CPF: " + getCPF() + "\n";
+        return "\nNome: " + getNomeProfessor() +"\n"+ getDisciplinaProfessor() +"\n"+ "CPF: " + getCPF();
     }
 
 }
