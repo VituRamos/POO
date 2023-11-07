@@ -2,9 +2,10 @@ import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Scanner;
 
-public class GerenciarProfessores extends GerenciarDisciplinas{
+public class GerenciarProfessores{
 
     Scanner scanner = new Scanner(System.in);
+    GerenciarDisciplinas gerenciarDisciplinas = new GerenciarDisciplinas();
 
     //Cadastrar
     public void cadastrarProfessor(String nomeProfessor, String CPF){
@@ -17,7 +18,7 @@ public class GerenciarProfessores extends GerenciarDisciplinas{
         System.out.print("Digite o nome da materia que será cadastrada para o Professor: ");
         String nomeMateria = scanner.nextLine();
 
-        Disciplinas novaDisciplinaProfessor = consultarDisciplinas(nomeMateria);
+        Disciplinas novaDisciplinaProfessor = gerenciarDisciplinas.consultarDisciplinas(nomeMateria);
 
         Professores Professor = new Professores(nomeProfessor,novaDisciplinaProfessor,CPF);
         Professores.ListaProfessores.add(Professor);
@@ -41,7 +42,7 @@ public class GerenciarProfessores extends GerenciarDisciplinas{
     //Exibir
     public ArrayList<Professores> exibirProfessores(){
 
-        System.out.println("----------Professores cadastrados no sistema----------\n");
+        System.out.println("\n----------Professores cadastrados no sistema----------");
 
         for (Professores elementoProfessor: Professores.ListaProfessores) {
             System.out.println(elementoProfessor);
