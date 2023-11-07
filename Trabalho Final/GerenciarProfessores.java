@@ -1,3 +1,4 @@
+package src;
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Scanner;
@@ -17,14 +18,24 @@ public class GerenciarProfessores{
 
         System.out.print("Digite o nome da materia que será cadastrada para o Professor: ");
         String nomeMateria = scanner.nextLine();
+        
+        
+        Disciplinas retorno = gerenciarDisciplinas.consultarDisciplinas(nomeMateria);
+        
+        if(retorno.getNomeDisciplina().equalsIgnoreCase("Vazio")) {
+        	System.out.println("-------------------------------------------------\n");
+        	return;
+        	
+        }else {
+        	
+        	Disciplinas novaDisciplinaProfessor = gerenciarDisciplinas.consultarDisciplinas(nomeMateria);
+            Professores Professor = new Professores(nomeProfessor,novaDisciplinaProfessor,CPF);
+            Professores.ListaProfessores.add(Professor);
 
-        Disciplinas novaDisciplinaProfessor = gerenciarDisciplinas.consultarDisciplinas(nomeMateria);
-
-        Professores Professor = new Professores(nomeProfessor,novaDisciplinaProfessor,CPF);
-        Professores.ListaProfessores.add(Professor);
-
-        System.out.println("-------------------------------------------------\n");
-        System.out.println("\n{{{{{Cadastro efetuado com sucesso}}}}}\n");
+            System.out.println("-------------------------------------------------\n");
+            System.out.println("\n{{{{{Cadastro efetuado com sucesso}}}}}\n");
+        	
+        }
 
     }
 
