@@ -14,6 +14,7 @@ public class GerenciarDisciplinas {
     public Disciplinas consultarDisciplinas(String nomeDisciplina){
 
         Disciplinas retornoDisciplinas = new Disciplinas("");
+        Disciplinas nulo = new Disciplinas("Vazio");
         Boolean cont = false;
 
         for (Disciplinas elementoDisciplinas: Disciplinas.ListaDisciplinas) {
@@ -25,8 +26,8 @@ public class GerenciarDisciplinas {
         }
         if (cont.equals(false)){
 
-            System.out.println("Materia ainda nao cadastrada no sistema, cadastre a nova materia desejada");
-            return null;
+            System.out.println("Materia ainda nao cadastrada no sistema, cadastre a nova materia desejada\n");
+            return nulo;
 
         }else {
             return retornoDisciplinas;
