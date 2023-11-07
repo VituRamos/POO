@@ -11,22 +11,39 @@ public class GerenciarDisciplinas {
     }
 
     //Consultar
-    public ArrayList<Disciplinas> consultarDisciplinas(String nomeDisciplina){
+    public Disciplinas consultarDisciplinas(String nomeDisciplina){
+
+        Disciplinas retornoDisciplinas = new Disciplinas("");
+        Boolean cont = false;
 
         for (Disciplinas elementoDisciplinas: Disciplinas.ListaDisciplinas) {
             if (elementoDisciplinas.getNomeDisciplina().equals(nomeDisciplina)){
                 System.out.println(elementoDisciplinas);
+                retornoDisciplinas = elementoDisciplinas;
+                cont = true;
             }
         }
-        return Disciplinas.ListaDisciplinas;
+        if (cont.equals(false)){
+
+            System.out.println("Materia ainda nao cadastrada no sistema, cadastre a nova materia desejada");
+            return null;
+
+        }else {
+            return retornoDisciplinas;
+        }
     }
 
     //Exibir
     public ArrayList<Disciplinas> exibirDisciplinas(){
 
+        System.out.println("----------Materias cadastradas no sistema----------\n");
+
         for (Disciplinas elementoDisciplinas: Disciplinas.ListaDisciplinas) {
             System.out.println(elementoDisciplinas);
         }
+
+        System.out.println("\n---------------------------------------------------");
+
         return Disciplinas.ListaDisciplinas;
     }
 
@@ -34,7 +51,7 @@ public class GerenciarDisciplinas {
     public ArrayList<Disciplinas> removerDisciplinas(String nomeDisciplina){
 
         for (Disciplinas elementoDisciplinas: Disciplinas.ListaDisciplinas) {
-            if (elementoDisciplinas.getNomeDisciplina().equals(nomeDisciplina)){
+            if (elementoDisciplinas.getNomeDisciplina().equalsIgnoreCase(nomeDisciplina)){
                 Disciplinas.ListaDisciplinas.remove(elementoDisciplinas);
             }
         }

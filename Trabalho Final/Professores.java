@@ -40,7 +40,7 @@ public class Professores{
     }
 
     public String toString(){
-        return "\nNome: " + getNomeProfessor() +"\n"+ getDisciplinaProfessor() +"\n"+ "CPF: " + getCPF();
+        return "\nNome: " + this.getNomeProfessor() +"\n"+ this.getDisciplinaProfessor()  +"\n"+ "CPF: " + this.getCPF();
     }
 
 }
