@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Locale;
 import java.util.Scanner;
 
 public class GerenciarProfessores{
@@ -17,36 +16,46 @@ public class GerenciarProfessores{
 
         System.out.print("Digite o nome da materia que será cadastrada para o Professor: ");
         String nomeMateria = scanner.nextLine();
+
+        Disciplinas disciplinaProfessor = gerenciarDisciplinas.consultarDisciplinas(nomeMateria);
         
-        
-        Disciplinas retorno = gerenciarDisciplinas.consultarDisciplinas(nomeMateria);
-        
-        if(retorno.getNomeDisciplina().equalsIgnoreCase("Vazio")) {
+        if(disciplinaProfessor.getNomeDisciplina().equalsIgnoreCase("")) {
         	System.out.println("-------------------------------------------------\n");
-        	return;
         	
         }else {
-        	
-        	Disciplinas novaDisciplinaProfessor = gerenciarDisciplinas.consultarDisciplinas(nomeMateria);
-            Professores Professor = new Professores(nomeProfessor,novaDisciplinaProfessor,CPF);
+
+            Professores Professor = new Professores(nomeProfessor, disciplinaProfessor,CPF);
             Professores.ListaProfessores.add(Professor);
 
             System.out.println("-------------------------------------------------\n");
-            System.out.println("\n{{{{{Cadastro efetuado com sucesso}}}}}\n");
-        	
+            System.out.println("\nCadastro efetuado com sucesso ✔️\n");
+
         }
 
     }
 
     //Consultar
-    public ArrayList<Professores> consultarProfessores(String CPF){
+    public Professores consultarProfessores(String CPF){
 
-        for (Professores elementoProfessor: Professores.ListaProfessores) {
-            if (elementoProfessor.getCPF().equalsIgnoreCase(CPF)){
-                System.out.println(elementoProfessor);
+        Professores retornoProfessores = new Professores("",null,"");
+        Professores nulo = new Professores("",null,"");
+        Boolean cont = false;
+
+        for (Professores elementoProfessores: Professores.ListaProfessores) {
+            if (elementoProfessores.getCPF().equalsIgnoreCase(CPF)){
+                retornoProfessores = elementoProfessores;
+                cont = true;
             }
         }
-        return Professores.ListaProfessores;
+        if (cont.equals(false)){
+
+            System.out.println("\n🔴 O professor pesquisado nao foi encontrado no sistema, cadastre o novo professor desejado.\n");
+            return nulo;
+
+        }else {
+            System.out.println(retornoProfessores);
+            return retornoProfessores;
+        }
     }
 
     //Exibir
@@ -58,7 +67,7 @@ public class GerenciarProfessores{
             System.out.println(elementoProfessor);
         }
 
-        System.out.println("------------------------------------------------------\n");
+        System.out.println("\n------------------------------------------------------\n");
 
         return Professores.ListaProfessores;
     }
@@ -67,7 +76,7 @@ public class GerenciarProfessores{
     public ArrayList<Professores> removerProfessor(String CPF){
 
         for (Professores elementoProfessor: Professores.ListaProfessores) {
-            if (elementoProfessor.getCPF().equals(CPF)){
+            if (elementoProfessor.getCPF().equalsIgnoreCase(CPF)){
                 Professores.ListaProfessores.remove(elementoProfessor);
             }
         }

@@ -14,22 +14,22 @@ public class GerenciarDisciplinas {
     public Disciplinas consultarDisciplinas(String nomeDisciplina){
 
         Disciplinas retornoDisciplinas = new Disciplinas("");
-        Disciplinas nulo = new Disciplinas("Vazio");
+        Disciplinas nulo = new Disciplinas("");
         Boolean cont = false;
 
         for (Disciplinas elementoDisciplinas: Disciplinas.ListaDisciplinas) {
-            if (elementoDisciplinas.getNomeDisciplina().equals(nomeDisciplina)){
-                System.out.println(elementoDisciplinas);
+            if (elementoDisciplinas.getNomeDisciplina().equalsIgnoreCase(nomeDisciplina)){
                 retornoDisciplinas = elementoDisciplinas;
                 cont = true;
             }
         }
         if (cont.equals(false)){
 
-            System.out.println("Materia ainda nao cadastrada no sistema, cadastre a nova materia desejada\n");
+            System.out.println("\n🔴 A materia pesquisada nao foi encontrada no sistema, cadastre a nova materia desejada.\n");
             return nulo;
 
         }else {
+            System.out.println(retornoDisciplinas);
             return retornoDisciplinas;
         }
     }
@@ -43,7 +43,7 @@ public class GerenciarDisciplinas {
             System.out.println(elementoDisciplinas);
         }
 
-        System.out.println("\n---------------------------------------------------");
+        System.out.println("\n---------------------------------------------------\n");
 
         return Disciplinas.ListaDisciplinas;
     }

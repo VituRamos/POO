@@ -18,23 +18,18 @@ public class Professores{
     public void setNomeProfessor(String nomeProfessor){
         this.nomeProfessor = nomeProfessor;
     }
-
     public String getNomeProfessor(){
         return nomeProfessor;
     }
-
     public void setDisciplinaProfessor(Disciplinas disciplinaProfessor){
         this.disciplinaProfessor = disciplinaProfessor;
     }
-
     public Disciplinas getDisciplinaProfessor(){
         return disciplinaProfessor;
     }
-
     public void setCPF(String CPF){
         this.CPF = CPF;
     }
-
     public String getCPF(){
         return CPF;
     }
