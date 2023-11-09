@@ -80,6 +80,9 @@ public class GerenciarProfessores{
                 Professores.ListaProfessores.remove(elementoProfessor);
             }
         }
+
+        System.out.println("\nRemocao efetuada com sucesso ✔️\n");
+
         return Professores.ListaProfessores;
     }
 

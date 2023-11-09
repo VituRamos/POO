@@ -7,23 +7,34 @@ public class Main {
         GerenciarProfessores gerenciarProfessores = new GerenciarProfessores();
         GerenciarAlunos gerenciarAlunos = new GerenciarAlunos();
         GerenciarTurmas gerenciarTurmas = new GerenciarTurmas();
+        Notas notas = new Notas();
+        Boletim boletim = new Boletim();
 
         gerenciarDisciplinas.cadastrarDisciplina("Matematica");
         gerenciarDisciplinas.cadastrarDisciplina("Portugues");
         gerenciarDisciplinas.cadastrarDisciplina("Ingles");
         gerenciarDisciplinas.exibirDisciplinas();
 
-        gerenciarProfessores.cadastrarProfessor("Joao","1");
-        gerenciarProfessores.cadastrarProfessor("Clodovil","2");
-        gerenciarProfessores.consultarProfessores("1");
+        gerenciarProfessores.cadastrarProfessor("Joao","46484012806");
+        gerenciarProfessores.cadastrarProfessor("Clodovil","46484012809");
+        gerenciarProfessores.consultarProfessores("46484012806");
         gerenciarProfessores.exibirProfessores();
 
-        gerenciarAlunos.cadastrarAluno("Jaozin","3");
-        gerenciarAlunos.cadastrarAluno("Clodovil Jr.","4");
-        gerenciarAlunos.consultarAlunos("3");
+        gerenciarAlunos.cadastrarAluno("Jaozin","a2368080");
+        gerenciarAlunos.cadastrarAluno("Clodovil Jr.","a2368081");
+        gerenciarAlunos.consultarAlunos("a2368080");
         gerenciarAlunos.exibirAlunos();
 
         gerenciarTurmas.cadastrarTurma("A1");
+        gerenciarTurmas.removerTurma("A1");
+        gerenciarTurmas.exibirTurmas();
+
+        notas.cadastrarNotas("46484012806");
+        notas.cadastrarNotas("46484012806");
+        notas.cadastrarNotas("46484012809");
+        notas.consultarNotas("46484012806");
+
+        boletim.consultarNotas("a2368080");
 
     }
 

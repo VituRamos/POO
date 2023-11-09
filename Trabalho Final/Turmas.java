@@ -16,21 +16,20 @@ public class Turmas {
         this.ListaAlunosTurma = ListaAlunosTurma;
     }
 
+    //Getters e Setters
     public String getNomeTurma(){
         return this.nomeTurma;
     }
-
     public ArrayList<Professores> getListaProfessoresTurma(){
         return this.ListaProfessoresTurma;
     }
-
     public ArrayList<Alunos> getListaAlunosTurma(){
         return this.ListaAlunosTurma;
     }
 
     public String toString(){
         return "\nNome da turma: " + getNomeTurma() +"\n\n"+
-                "Professores da turma: " + ListaProfessoresTurma.toString().replace("[", "").replace("]", "").replace(",","") +"\n\n"+
+                "Professores da turma: " + getListaProfessoresTurma().toString().replace("[", "").replace("]", "").replace(",","") +"\n\n"+
                 "Alunos da turma: " + getListaAlunosTurma().toString().replace("[", "").replace("]", "").replace(",","") +"\n";
     }
 

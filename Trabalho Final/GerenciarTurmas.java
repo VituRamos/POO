@@ -92,7 +92,7 @@ public class GerenciarTurmas {
 
         }
 
-            System.out.print("Deseja inserir outro professor na turma (s/n): ");
+            System.out.print("Deseja inserir outro aluno na turma (s/n): ");
             auxiliar_alunos = scanner.nextLine();
 
         }while (!auxiliar_alunos.equalsIgnoreCase("n"));
@@ -100,8 +100,37 @@ public class GerenciarTurmas {
         return retornoAlunosTurma;
     }
 
+    //Exibir
+    public ArrayList<Turmas> exibirTurmas(){
 
+        System.out.println("\n----------Turmas cadastradas no sistema----------");
 
+        for (Turmas elementoTurmas: Turmas.ListaTurmas) {
+            System.out.println(elementoTurmas);
+        }
+
+        System.out.println("\n--------------------------------------------------\n");
+
+        return Turmas.ListaTurmas;
+    }
+
+    //Remover
+    public ArrayList<Turmas> removerTurma(String nomeTurma){
+
+        ArrayList<Turmas> turmaRemover = new ArrayList<>();
+
+        for (Turmas elementoTurma: Turmas.ListaTurmas) {
+            if (elementoTurma.getNomeTurma().equalsIgnoreCase(nomeTurma)){
+                turmaRemover.add(elementoTurma);
+            }
+        }
+
+        Turmas.ListaTurmas.removeAll(turmaRemover);
+
+        System.out.println("\nRemocao efetuada com sucesso ✔️\n");
+
+        return Turmas.ListaTurmas;
+    }
 
 
 

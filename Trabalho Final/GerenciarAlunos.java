@@ -65,6 +65,9 @@ public class GerenciarAlunos {
                 Alunos.ListaAlunos.remove(elementoAluno);
             }
         }
+
+        System.out.println("\nRemocao efetuada com sucesso ✔️\n");
+
         return Alunos.ListaAlunos;
     }
 
