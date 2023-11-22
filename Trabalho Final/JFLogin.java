@@ -167,7 +167,7 @@ public class JFLogin extends javax.swing.JFrame {
         inputSenha = new String(jPSenha.getPassword());
         
         System.out.println("Usuario: " + inputUsuario);
-        System.out.println("Senha: " + inputSenha);
+        System.out.println("Senha: " + inputSenha + "\n");
         
         if (inputUsuario.equals(diretor.getLogin()) && inputSenha.equals(diretor.getSenha())){
             dispose();

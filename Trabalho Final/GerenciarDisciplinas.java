@@ -1,6 +1,7 @@
 package projetopoo;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 public class GerenciarDisciplinas {
 
@@ -8,8 +9,15 @@ public class GerenciarDisciplinas {
     public void cadastrarDisciplina(String nomeDisciplina){
 
         Disciplinas disciplina = new Disciplinas(nomeDisciplina);
-        Disciplinas.ListaDisciplinas.add(disciplina);
-
+        Disciplinas disciplinaconsulta = consultarDisciplinas(nomeDisciplina);
+        
+        if((disciplinaconsulta.getNomeDisciplina()).equals(this)){
+            JOptionPane.showMessageDialog(null, "A disciplina ja esta cadastrada no sistema, digite outra materia para cadastro", "Cadastro de Disciplina", JOptionPane.ERROR_MESSAGE);
+            return;
+        }else{
+            Disciplinas.ListaDisciplinas.add(disciplina);
+        }
+        
     }
 
     //Consultar
@@ -31,7 +39,7 @@ public class GerenciarDisciplinas {
             return nulo;
 
         }else {
-            System.out.println(retornoDisciplinas);
+            System.out.println("\n" + retornoDisciplinas);
             return retornoDisciplinas;
         }
     }

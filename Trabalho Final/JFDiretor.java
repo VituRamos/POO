@@ -12,6 +12,7 @@ public class JFDiretor extends javax.swing.JFrame {
     Alunos alunos = new Alunos();
     Professores professores = new Professores();
     JFGerenciarProfessores jfgerenciarProfessores;
+    JFGerenciarDisciplinas jfgerenciardisciplinas;
     
     String Usuario;
    
@@ -184,7 +185,9 @@ public class JFDiretor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBGerenciarDisciplinasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGerenciarDisciplinasActionPerformed
-        // TODO add your handling code here:
+        jfgerenciardisciplinas = new JFGerenciarDisciplinas();
+        dispose();
+        jfgerenciardisciplinas.setVisible(true);
     }//GEN-LAST:event_jBGerenciarDisciplinasActionPerformed
 
     private void jBVisitasTecnicasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBVisitasTecnicasActionPerformed
@@ -206,14 +209,13 @@ public class JFDiretor extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         this.setLocationRelativeTo(null);
         jLNomeUsuarioDiretor.setText(Usuario);
-        System.out.print(Usuario);
+        System.out.print("Usuario Diretor: " + Usuario + "\n");
         
     }//GEN-LAST:event_formWindowOpened
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         this.setLocationRelativeTo(null);
         jLNomeUsuarioDiretor.setText(Usuario);
-        System.out.print(Usuario);
     }//GEN-LAST:event_formWindowActivated
 
     /**
