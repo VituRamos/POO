@@ -1,3 +1,5 @@
+package projetopoo;
+
 import java.util.ArrayList;
 
 public class Professores{
@@ -12,6 +14,10 @@ public class Professores{
         setNomeProfessor(nomeProfessor);
         setDisciplinaProfessor(disciplinaProfessor);
         setCPF(CPF);
+    }
+    
+    public Professores(){
+
     }
 
     //Getters e Setters
@@ -36,6 +42,18 @@ public class Professores{
 
     public String toString(){
         return "\nNome: " + this.getNomeProfessor() +"\n"+ this.getDisciplinaProfessor()  +"\n"+ "CPF: " + this.getCPF();
+    }
+    
+    public String toStringNome(){
+        return "Nome: " + this.getNomeProfessor();
+    }
+        
+    public String toStringDisciplina(){
+        return ""+this.getDisciplinaProfessor();
+    }
+            
+    public String toStringCPF(){
+        return "CPF: " + this.getCPF();
     }
 
 }

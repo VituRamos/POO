@@ -1,8 +1,10 @@
+package projetopoo;
+
 public class Main {
 
 
     public Main(){
-
+        
         GerenciarDisciplinas gerenciarDisciplinas = new GerenciarDisciplinas();
         GerenciarProfessores gerenciarProfessores = new GerenciarProfessores();
         GerenciarAlunos gerenciarAlunos = new GerenciarAlunos();
@@ -25,24 +27,28 @@ public class Main {
         gerenciarAlunos.consultarAlunos("a2368080");
         gerenciarAlunos.exibirAlunos();
 
-        gerenciarTurmas.cadastrarTurma("A1");
-        gerenciarTurmas.removerTurma("A1");
-        gerenciarTurmas.exibirTurmas();
+        //gerenciarTurmas.cadastrarTurma("A1");
+        //gerenciarTurmas.removerTurma("A1");
+        //gerenciarTurmas.exibirTurmas();
 
-        notas.cadastrarNotas("46484012806");
-        notas.cadastrarNotas("46484012806");
-        notas.cadastrarNotas("46484012809");
-        notas.consultarNotas("46484012806");
+        //notas.cadastrarNotas("46484012806");
+        //notas.cadastrarNotas("46484012806");
+        //notas.cadastrarNotas("46484012809");
+        //notas.consultarNotas("46484012806");
 
-        boletim.consultarNotas("a2368080");
+        //boletim.consultarNotas("a2368080");
 
     }
 
 
     public static void main(String[] args) {
 
-    new Main();
+    Main main = new Main();
 
+    JFLogin login = new JFLogin();
+    login.setVisible(true);
+    
+    
 
     }
 }

@@ -1,3 +1,5 @@
+package projetopoo;
+
 import java.util.ArrayList;
 
 public class Alunos {
@@ -13,6 +15,10 @@ public class Alunos {
         setRA(RA);
     }
 
+    public Alunos(){
+
+    }
+    
     //Getters e Setters
     public void setNomeAluno(String nomeAluno){
         this.nomeAluno = nomeAluno;
@@ -29,6 +35,10 @@ public class Alunos {
 
     public String toString(){
         return "\nNome: " + this.getNomeAluno() +"\n"+ "RA: " + this.getRA();
+    }
+    
+    public String toStringRA(){
+        return "RA: " + this.getRA();
     }
 
 

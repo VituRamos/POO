@@ -1,3 +1,5 @@
+package projetopoo;
+
 import java.util.ArrayList;
 
 public class Disciplinas {
@@ -22,7 +24,7 @@ public class Disciplinas {
     }
 
     public String toString(){
-        return "Nome da Materia: " + getNomeDisciplina();
+        return "Materia: " + getNomeDisciplina();
     }
 
 
