@@ -185,7 +185,7 @@ public class JFDiretor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBGerenciarDisciplinasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGerenciarDisciplinasActionPerformed
-        jfgerenciardisciplinas = new JFGerenciarDisciplinas();
+        jfgerenciardisciplinas = new JFGerenciarDisciplinas(Usuario);
         dispose();
         jfgerenciardisciplinas.setVisible(true);
     }//GEN-LAST:event_jBGerenciarDisciplinasActionPerformed
@@ -195,7 +195,7 @@ public class JFDiretor extends javax.swing.JFrame {
     }//GEN-LAST:event_jBVisitasTecnicasActionPerformed
 
     private void jBGerenciarAlunosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGerenciarAlunosActionPerformed
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_jBGerenciarAlunosActionPerformed
 
     private void jBGerenciarProfessoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGerenciarProfessoresActionPerformed
@@ -214,8 +214,8 @@ public class JFDiretor extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        this.setLocationRelativeTo(null);
         jLNomeUsuarioDiretor.setText(Usuario);
+        this.setLocationRelativeTo(null);
     }//GEN-LAST:event_formWindowActivated
 
     /**

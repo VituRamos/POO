@@ -121,16 +121,23 @@ public class JFCadastrarDisciplinas extends javax.swing.JFrame {
         
         String NomeDisciplina = jTNomeDisciplina.getText();
         
-        gerenciardisciplinas.cadastrarDisciplina(NomeDisciplina);
         Disciplinas disciplina = gerenciardisciplinas.consultarDisciplinas(NomeDisciplina);
         
-        if(disciplina.getNomeDisciplina().equals(NomeDisciplina)){
-            JOptionPane.showMessageDialog(null, "A disciplina foi cadastrada com sucesso", "Cadastro de Disciplina", JOptionPane.INFORMATION_MESSAGE);
+        if (disciplina.getNomeDisciplina().equals("")){
+            
+            gerenciardisciplinas.cadastrarDisciplina(NomeDisciplina);
+            disciplina = gerenciardisciplinas.consultarDisciplinas(NomeDisciplina);
+                    
+                if(disciplina.getNomeDisciplina().equals(NomeDisciplina)){
+                    JOptionPane.showMessageDialog(null, "A disciplina foi cadastrada com sucesso", "Cadastro de Disciplina", JOptionPane.INFORMATION_MESSAGE);
+                }else{
+                    JOptionPane.showMessageDialog(null, "Houve um erro ao cadastrar a disciplina", "Cadastro de Disciplina", JOptionPane.ERROR_MESSAGE);
+                }
         }else{
-            JOptionPane.showMessageDialog(null, "Houve um erro ao cadastrar a disciplina", "Cadastro de Disciplina", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "A disciplina ja esta cadastrada", "Cadastro de Disciplina", JOptionPane.INFORMATION_MESSAGE);
+            return;
         }
-        
-        jBConfirmar.setText("");
+       
         
     }//GEN-LAST:event_jBConfirmarActionPerformed
 

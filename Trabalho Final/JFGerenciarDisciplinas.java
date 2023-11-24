@@ -4,6 +4,8 @@
  */
 package projetopoo;
 
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author victo
@@ -11,18 +13,31 @@ package projetopoo;
 public class JFGerenciarDisciplinas extends javax.swing.JFrame {
 
     String Usuario;
-    JFDiretor jfdiretor;
     JFCadastrarDisciplinas jfcadastrardisciplinas;
+    GerenciarDisciplinas gerenciardisciplinas = new GerenciarDisciplinas();
+    private DefaultTableModel tableModel;
     
     public JFGerenciarDisciplinas() {
         initComponents();
+        tableModel = new DefaultTableModel();
+        tableModel.addColumn("Disciplinas");
+        jTableDisciplinas.setModel(tableModel);
+        tableModel.setRowCount(0);
     }
     
     public JFGerenciarDisciplinas(String Usuario) {
         initComponents();
         this.Usuario = Usuario;
+        tableModel = new DefaultTableModel();
+        tableModel.addColumn("Disciplinas");
+        jTableDisciplinas.setModel(tableModel);
+        tableModel.setRowCount(0);
     }
 
+    public void limpaTabela(){
+        ((DefaultTableModel) jTableDisciplinas.getModel()).setRowCount(0);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -33,13 +48,19 @@ public class JFGerenciarDisciplinas extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableDisciplinas = new javax.swing.JTable();
         jTPesquisarDisciplinas = new javax.swing.JTextField();
         jBPesquisarDisciplinas = new javax.swing.JButton();
         jBCadastrarDisciplina = new javax.swing.JButton();
         jBVoltar = new javax.swing.JButton();
+        jBRemover = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                formMousePressed(evt);
+            }
+        });
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
@@ -49,7 +70,13 @@ public class JFGerenciarDisciplinas extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jScrollPane1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jScrollPane1MouseClicked(evt);
+            }
+        });
+
+        jTableDisciplinas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -60,7 +87,12 @@ public class JFGerenciarDisciplinas extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jTableDisciplinas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableDisciplinasMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jTableDisciplinas);
 
         jTPesquisarDisciplinas.setText("Digite o nome da materia");
         jTPesquisarDisciplinas.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -75,8 +107,14 @@ public class JFGerenciarDisciplinas extends javax.swing.JFrame {
         });
 
         jBPesquisarDisciplinas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetopoo/Icones/procurar16px.png"))); // NOI18N
-        jBPesquisarDisciplinas.setMaximumSize(new java.awt.Dimension(16, 16));
-        jBPesquisarDisciplinas.setMinimumSize(new java.awt.Dimension(16, 16));
+        jBPesquisarDisciplinas.setMaximumSize(new java.awt.Dimension(16, 18));
+        jBPesquisarDisciplinas.setMinimumSize(new java.awt.Dimension(16, 18));
+        jBPesquisarDisciplinas.setPreferredSize(new java.awt.Dimension(23, 23));
+        jBPesquisarDisciplinas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBPesquisarDisciplinasActionPerformed(evt);
+            }
+        });
 
         jBCadastrarDisciplina.setText("Cadastrar");
         jBCadastrarDisciplina.addActionListener(new java.awt.event.ActionListener() {
@@ -92,6 +130,13 @@ public class JFGerenciarDisciplinas extends javax.swing.JFrame {
             }
         });
 
+        jBRemover.setText("Remover");
+        jBRemover.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBRemoverActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -103,28 +148,31 @@ public class JFGerenciarDisciplinas extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jTPesquisarDisciplinas, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jBPesquisarDisciplinas, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jBPesquisarDisciplinas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(52, 52, 52))
             .addGroup(layout.createSequentialGroup()
                 .addGap(132, 132, 132)
                 .addComponent(jBCadastrarDisciplina)
-                .addGap(116, 116, 116)
+                .addGap(23, 23, 23)
+                .addComponent(jBRemover)
+                .addGap(18, 18, 18)
                 .addComponent(jBVoltar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(52, Short.MAX_VALUE)
+                .addContainerGap(53, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTPesquisarDisciplinas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jBPesquisarDisciplinas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jBPesquisarDisciplinas, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBCadastrarDisciplina)
-                    .addComponent(jBVoltar))
+                    .addComponent(jBVoltar)
+                    .addComponent(jBRemover))
                 .addGap(34, 34, 34))
         );
 
@@ -136,7 +184,7 @@ public class JFGerenciarDisciplinas extends javax.swing.JFrame {
     }//GEN-LAST:event_jTPesquisarDisciplinasActionPerformed
 
     private void jBVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBVoltarActionPerformed
-        jfdiretor = new JFDiretor(Usuario);
+        JFDiretor jfdiretor = new JFDiretor(Usuario);
         dispose();
         jfdiretor.setVisible(true);
     }//GEN-LAST:event_jBVoltarActionPerformed
@@ -156,8 +204,56 @@ public class JFGerenciarDisciplinas extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(null); 
+        
+        for (Disciplinas elementoDisciplinas: Disciplinas.ListaDisciplinas) {
+            tableModel.addRow(new Object[]{elementoDisciplinas.getNomeDisciplina()});
+        }
+        
     }//GEN-LAST:event_formWindowActivated
+
+    private void jBRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRemoverActionPerformed
+
+        int linhaselecionada = jTableDisciplinas.getSelectedRow();
+        
+        String NomeDisciplina = jTableDisciplinas.getValueAt(linhaselecionada, 0).toString();
+        ((DefaultTableModel) jTableDisciplinas.getModel()).removeRow(linhaselecionada);
+        
+        gerenciardisciplinas.removerDisciplinas(NomeDisciplina);
+        
+    }//GEN-LAST:event_jBRemoverActionPerformed
+
+    private void jScrollPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jScrollPane1MouseClicked
+         
+    }//GEN-LAST:event_jScrollPane1MouseClicked
+
+    private void jTableDisciplinasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableDisciplinasMouseClicked
+            
+
+    }//GEN-LAST:event_jTableDisciplinasMouseClicked
+
+    private void jBPesquisarDisciplinasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBPesquisarDisciplinasActionPerformed
+        
+        String NomeDisciplina = jTPesquisarDisciplinas.getText();
+        System.out.println(NomeDisciplina);
+        gerenciardisciplinas.consultarDisciplinas(NomeDisciplina);
+        
+        limpaTabela();
+        
+        for (Disciplinas elementoDisciplinas: Disciplinas.ListaDisciplinas) {
+            if (elementoDisciplinas.getNomeDisciplina().equalsIgnoreCase(NomeDisciplina)) {
+                tableModel.addRow(new Object[]{elementoDisciplinas.getNomeDisciplina()});
+            }
+        }
+        
+    }//GEN-LAST:event_jBPesquisarDisciplinasActionPerformed
+
+    private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
+                
+        String texto = "Digite o nome da materia";
+        jTPesquisarDisciplinas.setText(texto);
+        
+    }//GEN-LAST:event_formMousePressed
 
     /**
      * @param args the command line arguments
@@ -197,9 +293,10 @@ public class JFGerenciarDisciplinas extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBCadastrarDisciplina;
     private javax.swing.JButton jBPesquisarDisciplinas;
+    private javax.swing.JButton jBRemover;
     private javax.swing.JButton jBVoltar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTPesquisarDisciplinas;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTableDisciplinas;
     // End of variables declaration//GEN-END:variables
 }

@@ -17,10 +17,10 @@ public class Main {
         gerenciarDisciplinas.cadastrarDisciplina("Ingles");
         gerenciarDisciplinas.exibirDisciplinas();
 
-        gerenciarProfessores.cadastrarProfessor("Joao","46484012806");
-        gerenciarProfessores.cadastrarProfessor("Clodovil","46484012809");
-        gerenciarProfessores.consultarProfessores("46484012806");
-        gerenciarProfessores.exibirProfessores();
+        //gerenciarProfessores.cadastrarProfessor("Joao","46484012806");
+        //gerenciarProfessores.cadastrarProfessor("Clodovil","46484012809");
+        //gerenciarProfessores.consultarProfessores("46484012806");
+        //gerenciarProfessores.exibirProfessores();
 
         gerenciarAlunos.cadastrarAluno("Jaozin","a2368080");
         gerenciarAlunos.cadastrarAluno("Clodovil Jr.","a2368081");
