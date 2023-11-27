@@ -1,6 +1,7 @@
 package projetopoo;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class GerenciarDisciplinas {
 
@@ -53,11 +54,18 @@ public class GerenciarDisciplinas {
     //Exibir
     public ArrayList<Disciplinas> removerDisciplinas(String nomeDisciplina){
 
-        for (Disciplinas elementoDisciplinas: Disciplinas.ListaDisciplinas) {
-            if (elementoDisciplinas.getNomeDisciplina().equalsIgnoreCase(nomeDisciplina)){
-                Disciplinas.ListaDisciplinas.remove(elementoDisciplinas);
+        Iterator<Disciplinas> iterator = Disciplinas.ListaDisciplinas.iterator();
+        
+        while (iterator.hasNext()) {
+            Disciplinas elementoDisciplina = iterator.next();
+
+            if (elementoDisciplina.getNomeDisciplina().equalsIgnoreCase(nomeDisciplina)){
+                iterator.remove();
             }
         }
+        
+        System.out.println("\nRemocao efetuada com sucesso ✔️\n");
+        
         return Disciplinas.ListaDisciplinas;
     }
 

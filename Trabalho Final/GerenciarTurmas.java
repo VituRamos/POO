@@ -11,14 +11,14 @@ public class GerenciarTurmas {
     GerenciarAlunos gerenciarAlunos = new GerenciarAlunos();
 
 
-    public void cadastrarTurma(String nomeTurma){
+    public void cadastrarTurma(String nomeTurma,ArrayList<Professores> ListaProfessoresTurma, ArrayList<Alunos> ListaAlunosTurma){
 
         System.out.println("\n--------------------Cadastro de Turmas--------------------");
 
-        ArrayList<Professores> professoresTurma = cadastraListaProfessoresTurma();
-        ArrayList<Alunos> alunosTurma = cadastraListaAlunosTurma();
+        //ArrayList<Professores> professoresTurma = cadastraListaProfessoresTurma();
+        //ArrayList<Alunos> alunosTurma = cadastraListaAlunosTurma();
 
-        Turmas turma = new Turmas(nomeTurma,professoresTurma,alunosTurma);
+        Turmas turma = new Turmas(nomeTurma,ListaProfessoresTurma,ListaAlunosTurma);
         Turmas.ListaTurmas.add(turma);
 
         System.out.println("\n---------------------Turma Cadastrada---------------------");
@@ -116,7 +116,7 @@ public class GerenciarTurmas {
         return Turmas.ListaTurmas;
     }
 
-    //Remover
+    //Remover -> Adicionar Iterator
     public ArrayList<Turmas> removerTurma(String nomeTurma){
 
         ArrayList<Turmas> turmaRemover = new ArrayList<>();

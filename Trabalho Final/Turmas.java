@@ -22,17 +22,32 @@ public class Turmas {
     public String getNomeTurma(){
         return this.nomeTurma;
     }
-    public ArrayList<Professores> getListaProfessoresTurma(){
-        return this.ListaProfessoresTurma;
+    
+    public String getListaAlunosTurmaString(){
+        StringBuilder result = new StringBuilder();
+        this.ListaAlunosTurma.forEach((t) -> {
+            result.append(t.getNomeAluno())
+                  .append(" ")
+                  .append(t.getRA())
+                  .append("\n"); // Adiciona uma quebra de linha entre os itens, se desejado
+        });
+        return result.toString();
     }
-    public ArrayList<Alunos> getListaAlunosTurma(){
-        return this.ListaAlunosTurma;
+    
+    public String getListaProfessoresTurmaString(){
+        StringBuilder result = new StringBuilder();
+        this.ListaProfessoresTurma.forEach((t) -> {
+            result.append(t.getNomeProfessor())
+                  .append(" ")
+                  .append(t.getCPF())
+                  .append(" ")
+                  .append(t.getDisciplinaProfessor())
+                  .append("\n"); // Adiciona uma quebra de linha entre os itens, se desejado
+        });
+        return result.toString();
     }
+    
 
-    public String toString(){
-        return "\nNome da turma: " + getNomeTurma() +"\n\n"+
-                "Professores da turma: " + getListaProfessoresTurma().toString().replace("[", "").replace("]", "").replace(",","") +"\n\n"+
-                "Alunos da turma: " + getListaAlunosTurma().toString().replace("[", "").replace("]", "").replace(",","") +"\n";
-    }
+
 
 }

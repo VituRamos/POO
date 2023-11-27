@@ -67,23 +67,23 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
               <Component id="jPanelDiretor" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="135" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace pref="101" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jBGerenciarAlunos" alignment="3" min="-2" pref="145" max="-2" attributes="0"/>
                           <Component id="jBGerenciarDisciplinas" alignment="3" min="-2" pref="145" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                      <Component id="jBGerenciarTurmas" min="-2" pref="145" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jBVisitasTecnicas" alignment="1" min="-2" pref="145" max="-2" attributes="0"/>
+                          <Component id="jBGerenciarTurmas" alignment="1" min="-2" pref="145" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <Group type="102" attributes="0">
                       <Component id="jBGerenciarProfessores" min="-2" pref="145" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jBPalestras" alignment="3" min="-2" pref="145" max="-2" attributes="0"/>
-                          <Component id="jBVisitasTecnicas" alignment="3" min="-2" pref="145" max="-2" attributes="0"/>
-                      </Group>
+                      <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
+                      <Component id="jBPalestras" min="-2" pref="145" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
@@ -125,11 +125,17 @@
     <Component class="javax.swing.JButton" name="jBPalestras">
       <Properties>
         <Property name="text" type="java.lang.String" value="Palestras"/>
+        <Property name="horizontalTextPosition" type="int" value="0"/>
+        <Property name="verticalTextPosition" type="int" value="3"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="jBVisitasTecnicas">
       <Properties>
         <Property name="text" type="java.lang.String" value="Visitas T&#xe9;cnicas"/>
+        <Property name="alignmentY" type="float" value="0.0"/>
+        <Property name="horizontalTextPosition" type="int" value="0"/>
+        <Property name="iconTextGap" type="int" value="10"/>
+        <Property name="verticalTextPosition" type="int" value="3"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBVisitasTecnicasActionPerformed"/>
@@ -153,9 +159,9 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                  <Component id="jLIconeDiretor" min="-2" pref="128" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                  <Component id="jLIconeDiretor" min="-2" pref="76" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
                   <Component id="jLBemVindo" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLNomeUsuarioDiretor" min="-2" pref="211" max="-2" attributes="0"/>
@@ -206,6 +212,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Gerenciar Turmas"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBGerenciarTurmasActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

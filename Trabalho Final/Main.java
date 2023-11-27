@@ -13,19 +13,19 @@ public class Main {
         Boletim boletim = new Boletim();
 
         gerenciarDisciplinas.cadastrarDisciplina("Matematica");
-        gerenciarDisciplinas.cadastrarDisciplina("Portugues");
-        gerenciarDisciplinas.cadastrarDisciplina("Ingles");
-        gerenciarDisciplinas.exibirDisciplinas();
+        //gerenciarDisciplinas.cadastrarDisciplina("Portugues");
+        //gerenciarDisciplinas.cadastrarDisciplina("Ingles");
+        //gerenciarDisciplinas.exibirDisciplinas();
 
-        //gerenciarProfessores.cadastrarProfessor("Joao","46484012806");
-        //gerenciarProfessores.cadastrarProfessor("Clodovil","46484012809");
+        gerenciarProfessores.cadastrarProfessor("Joao","46484012806","Matematica");
+        gerenciarProfessores.cadastrarProfessor("Clodovil","46484012809","Matematica");
         //gerenciarProfessores.consultarProfessores("46484012806");
         //gerenciarProfessores.exibirProfessores();
 
         gerenciarAlunos.cadastrarAluno("Jaozin","a2368080");
         gerenciarAlunos.cadastrarAluno("Clodovil Jr.","a2368081");
-        gerenciarAlunos.consultarAlunos("a2368080");
-        gerenciarAlunos.exibirAlunos();
+        //gerenciarAlunos.consultarAlunos("a2368080");
+        //gerenciarAlunos.exibirAlunos();
 
         //gerenciarTurmas.cadastrarTurma("A1");
         //gerenciarTurmas.removerTurma("A1");

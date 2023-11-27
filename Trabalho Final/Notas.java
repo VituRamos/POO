@@ -27,7 +27,7 @@ public class Notas {
     public String getProfessorNome(){
         return this.professor.getNomeProfessor();
     }
-    public Disciplinas getProfessorDisciplina(){
+    public String getProfessorDisciplina(){
        return this.professor.getDisciplinaProfessor();
     }
 
@@ -80,7 +80,7 @@ public class Notas {
     public ArrayList<Notas> consultarNotas(String CPF) {
 
         ArrayList<Notas> ListaRetornoNotas = new ArrayList<>();
-        Disciplinas retornoDisciplina = new Disciplinas("");
+        String retornoDisciplina="";
 
         for (Notas elementoNotas : ListaNotas) {
             if (elementoNotas.professor.getCPF().equals(CPF)) {

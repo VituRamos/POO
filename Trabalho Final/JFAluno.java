@@ -148,7 +148,7 @@ public class JFAluno extends javax.swing.JFrame {
         for (Alunos elementoAlunos: Alunos.ListaAlunos){
             if(elementoAlunos.getRA().equals(Usuario)){
                 jLNomeAluno.setText(elementoAlunos.getNomeAluno());
-                jLUsuarioAluno.setText(elementoAlunos.toStringRA());
+                jLUsuarioAluno.setText(elementoAlunos.getRA());
             }
         }
     }//GEN-LAST:event_formWindowOpened
@@ -160,7 +160,7 @@ public class JFAluno extends javax.swing.JFrame {
         for (Alunos elementoAlunos: Alunos.ListaAlunos){
             if(elementoAlunos.getRA().equals(Usuario)){
                 jLNomeAluno.setText(elementoAlunos.getNomeAluno());
-                jLUsuarioAluno.setText(elementoAlunos.toStringRA());
+                jLUsuarioAluno.setText(elementoAlunos.getRA());
             }
         }
     }//GEN-LAST:event_formWindowActivated

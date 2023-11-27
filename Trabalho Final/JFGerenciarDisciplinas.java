@@ -70,12 +70,6 @@ public class JFGerenciarDisciplinas extends javax.swing.JFrame {
             }
         });
 
-        jScrollPane1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jScrollPane1MouseClicked(evt);
-            }
-        });
-
         jTableDisciplinas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -87,22 +81,12 @@ public class JFGerenciarDisciplinas extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jTableDisciplinas.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTableDisciplinasMouseClicked(evt);
-            }
-        });
         jScrollPane1.setViewportView(jTableDisciplinas);
 
         jTPesquisarDisciplinas.setText("Digite o nome da materia");
         jTPesquisarDisciplinas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTPesquisarDisciplinasMouseClicked(evt);
-            }
-        });
-        jTPesquisarDisciplinas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTPesquisarDisciplinasActionPerformed(evt);
             }
         });
 
@@ -179,10 +163,6 @@ public class JFGerenciarDisciplinas extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTPesquisarDisciplinasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTPesquisarDisciplinasActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTPesquisarDisciplinasActionPerformed
-
     private void jBVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBVoltarActionPerformed
         JFDiretor jfdiretor = new JFDiretor(Usuario);
         dispose();
@@ -223,20 +203,10 @@ public class JFGerenciarDisciplinas extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jBRemoverActionPerformed
 
-    private void jScrollPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jScrollPane1MouseClicked
-         
-    }//GEN-LAST:event_jScrollPane1MouseClicked
-
-    private void jTableDisciplinasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableDisciplinasMouseClicked
-            
-
-    }//GEN-LAST:event_jTableDisciplinasMouseClicked
-
     private void jBPesquisarDisciplinasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBPesquisarDisciplinasActionPerformed
         
         String NomeDisciplina = jTPesquisarDisciplinas.getText();
-        System.out.println(NomeDisciplina);
-        gerenciardisciplinas.consultarDisciplinas(NomeDisciplina);
+        System.out.println("Disciplina pesquisada: " + NomeDisciplina);
         
         limpaTabela();
         
@@ -250,8 +220,7 @@ public class JFGerenciarDisciplinas extends javax.swing.JFrame {
 
     private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
                 
-        String texto = "Digite o nome da materia";
-        jTPesquisarDisciplinas.setText(texto);
+        jTPesquisarDisciplinas.setText("Digite o nome da materia");
         
     }//GEN-LAST:event_formMousePressed
 

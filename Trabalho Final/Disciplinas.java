@@ -23,9 +23,5 @@ public class Disciplinas {
         this.nomeDisciplina = nomeDisciplina;
     }
 
-    public String toString(){
-        return "Materia: " + getNomeDisciplina();
-    }
-
 
 }

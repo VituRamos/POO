@@ -11,8 +11,10 @@ public class JFDiretor extends javax.swing.JFrame {
 
     Alunos alunos = new Alunos();
     Professores professores = new Professores();
-    JFGerenciarProfessores jfgerenciarProfessores;
+    JFGerenciarProfessores jfgerenciarprofessores;
     JFGerenciarDisciplinas jfgerenciardisciplinas;
+    JFGerenciarAlunos jfgerenciaralunos;
+    JFGerenciarTurmas jfgerenciarturmas;
     
     String Usuario;
    
@@ -86,8 +88,14 @@ public class JFDiretor extends javax.swing.JFrame {
         });
 
         jBPalestras.setText("Palestras");
+        jBPalestras.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBPalestras.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
         jBVisitasTecnicas.setText("Visitas Técnicas");
+        jBVisitasTecnicas.setAlignmentY(0.0F);
+        jBVisitasTecnicas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBVisitasTecnicas.setIconTextGap(10);
+        jBVisitasTecnicas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jBVisitasTecnicas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBVisitasTecnicasActionPerformed(evt);
@@ -109,9 +117,9 @@ public class JFDiretor extends javax.swing.JFrame {
         jPanelDiretorLayout.setHorizontalGroup(
             jPanelDiretorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelDiretorLayout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(jLIconeDiretor, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(44, 44, 44)
+                .addComponent(jLIconeDiretor, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(52, 52, 52)
                 .addComponent(jLBemVindo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLNomeUsuarioDiretor, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -132,6 +140,11 @@ public class JFDiretor extends javax.swing.JFrame {
         );
 
         jBGerenciarTurmas.setText("Gerenciar Turmas");
+        jBGerenciarTurmas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBGerenciarTurmasActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -164,20 +177,20 @@ public class JFDiretor extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(57, 57, 57)
                 .addComponent(jPanelDiretor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 135, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jBGerenciarAlunos, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jBGerenciarDisciplinas, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(40, 40, 40)
-                        .addComponent(jBGerenciarTurmas, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jBVisitasTecnicas, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jBGerenciarTurmas, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jBGerenciarProfessores, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jBPalestras, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jBVisitasTecnicas, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(74, 74, 74)
+                        .addComponent(jBPalestras, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(83, 83, 83))
         );
 
@@ -195,14 +208,16 @@ public class JFDiretor extends javax.swing.JFrame {
     }//GEN-LAST:event_jBVisitasTecnicasActionPerformed
 
     private void jBGerenciarAlunosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGerenciarAlunosActionPerformed
-       
+        jfgerenciaralunos = new JFGerenciarAlunos(Usuario);
+        dispose();
+        jfgerenciaralunos.setVisible(true);
     }//GEN-LAST:event_jBGerenciarAlunosActionPerformed
 
     private void jBGerenciarProfessoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGerenciarProfessoresActionPerformed
         
-        jfgerenciarProfessores = new JFGerenciarProfessores(Usuario);
+        jfgerenciarprofessores = new JFGerenciarProfessores(Usuario);
         dispose();
-        jfgerenciarProfessores.setVisible(true);
+        jfgerenciarprofessores.setVisible(true);
         
     }//GEN-LAST:event_jBGerenciarProfessoresActionPerformed
 
@@ -217,6 +232,12 @@ public class JFDiretor extends javax.swing.JFrame {
         jLNomeUsuarioDiretor.setText(Usuario);
         this.setLocationRelativeTo(null);
     }//GEN-LAST:event_formWindowActivated
+
+    private void jBGerenciarTurmasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGerenciarTurmasActionPerformed
+        jfgerenciarturmas = new JFGerenciarTurmas(Usuario);
+        dispose();
+        jfgerenciarturmas.setVisible(true);
+    }//GEN-LAST:event_jBGerenciarTurmasActionPerformed
 
     /**
      * @param args the command line arguments

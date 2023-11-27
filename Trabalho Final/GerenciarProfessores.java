@@ -1,6 +1,7 @@
 package projetopoo;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Scanner;
 
 public class GerenciarProfessores{
@@ -9,15 +10,15 @@ public class GerenciarProfessores{
     GerenciarDisciplinas gerenciarDisciplinas = new GerenciarDisciplinas();
 
     //Cadastrar
-    public void cadastrarProfessor(String nomeProfessor, String CPF){
+    public void cadastrarProfessor(String nomeProfessor, String CPF, String nomeMateria){
 
         System.out.println("\n--------------Cadastro de Professores--------------");
 
         System.out.println("\nNome do Professor que sera cadastrado: " + nomeProfessor);
         System.out.println("CPF do Professor que sera cadastrado: " + CPF);
 
-        System.out.print("Digite o nome da materia que será cadastrada para o Professor: ");
-        String nomeMateria = scanner.nextLine();
+        //System.out.print("Digite o nome da materia que será cadastrada para o Professor: ");
+        //String nomeMateria = scanner.nextLine();
 
         Disciplinas disciplinaProfessor = gerenciarDisciplinas.consultarDisciplinas(nomeMateria);
         
@@ -77,9 +78,13 @@ public class GerenciarProfessores{
     //Remover
     public ArrayList<Professores> removerProfessor(String CPF){
 
-        for (Professores elementoProfessor: Professores.ListaProfessores) {
-            if (elementoProfessor.getCPF().equalsIgnoreCase(CPF)){
-                Professores.ListaProfessores.remove(elementoProfessor);
+        Iterator<Professores> iterator = Professores.ListaProfessores.iterator();
+        
+        while (iterator.hasNext()) {
+            Professores elementoProfessor = iterator.next();
+
+            if (elementoProfessor.getCPF().equalsIgnoreCase(CPF)) {
+                iterator.remove();
             }
         }
 

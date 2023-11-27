@@ -1,6 +1,7 @@
 package projetopoo;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class GerenciarAlunos {
 
@@ -62,9 +63,13 @@ public class GerenciarAlunos {
     //Remover
     public ArrayList<Alunos> removerAluno(String RA){
 
-        for (Alunos elementoAluno: Alunos.ListaAlunos) {
-            if (elementoAluno.getRA().equalsIgnoreCase(RA)){
-                Alunos.ListaAlunos.remove(elementoAluno);
+        Iterator<Alunos> iterator = Alunos.ListaAlunos.iterator();
+        
+        while (iterator.hasNext()) {
+            Alunos elementoAluno = iterator.next();
+
+            if (elementoAluno.getRA().equalsIgnoreCase(RA)) {
+                iterator.remove();
             }
         }
 

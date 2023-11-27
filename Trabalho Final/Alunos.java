@@ -33,13 +33,6 @@ public class Alunos {
         return this.RA;
     }
 
-    public String toString(){
-        return "\nNome: " + this.getNomeAluno() +"\n"+ "RA: " + this.getRA();
-    }
-    
-    public String toStringRA(){
-        return "RA: " + this.getRA();
-    }
 
 
 }

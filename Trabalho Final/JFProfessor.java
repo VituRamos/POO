@@ -217,8 +217,8 @@ public class JFProfessor extends javax.swing.JFrame {
         for (Professores elementoProfessores: Professores.ListaProfessores){
             if(elementoProfessores.getCPF().equals(Usuario)){
                 jLNomeProfessor.setText(elementoProfessores.getNomeProfessor());
-                jLUsuarioProfessor.setText(elementoProfessores.toStringCPF());
-                jLDisciplinaProfessor.setText(elementoProfessores.toStringDisciplina());
+                jLUsuarioProfessor.setText(elementoProfessores.getCPF());
+                jLDisciplinaProfessor.setText(elementoProfessores.getDisciplinaProfessor().toString());
             }
         }
         
@@ -230,8 +230,8 @@ public class JFProfessor extends javax.swing.JFrame {
         for (Professores elementoProfessores: Professores.ListaProfessores){
             if(elementoProfessores.getCPF().equals(Usuario)){
                 jLNomeProfessor.setText(elementoProfessores.getNomeProfessor());
-                jLUsuarioProfessor.setText(elementoProfessores.toStringCPF());
-                jLDisciplinaProfessor.setText(elementoProfessores.toStringDisciplina());
+                jLUsuarioProfessor.setText(elementoProfessores.getCPF());
+                jLDisciplinaProfessor.setText(elementoProfessores.getDisciplinaProfessor().toString());
             }
         }
         

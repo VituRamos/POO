@@ -4,25 +4,41 @@
  */
 package projetopoo;
 
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author victo
  */
 public class JFGerenciarProfessores extends javax.swing.JFrame {
-
-    /**
-     * Creates new form JFGerenciarProfessores
-     */
     
     String Usuario;
+    GerenciarProfessores gerenciarprofessores = new GerenciarProfessores();
+    private DefaultTableModel tableModel;
     
     public JFGerenciarProfessores() {
         initComponents();
+        tableModel = new DefaultTableModel();
+        tableModel.addColumn("Nome");
+        tableModel.addColumn("CPF");
+        tableModel.addColumn("Disciplina");
+        jTableProfessores.setModel(tableModel);
+        tableModel.setRowCount(0);
     }
     
     public JFGerenciarProfessores(String Usuario) {
         initComponents();
         this.Usuario = Usuario;
+        tableModel = new DefaultTableModel();
+        tableModel.addColumn("Nome");
+        tableModel.addColumn("CPF");
+        tableModel.addColumn("Disciplina");
+        jTableProfessores.setModel(tableModel);
+        tableModel.setRowCount(0);
+    }
+    
+    public void limpaTabela(){
+        ((DefaultTableModel) jTableProfessores.getModel()).setRowCount(0);
     }
 
     /**
@@ -34,42 +50,49 @@ public class JFGerenciarProfessores extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jBCadastrar = new javax.swing.JButton();
+        jBRemover = new javax.swing.JButton();
+        jBPesquisar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jTextField1 = new javax.swing.JTextField();
+        jTableProfessores = new javax.swing.JTable();
+        jTPesquisarProfessor = new javax.swing.JTextField();
         jBVoltar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Gerenciar Professores");
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                formMousePressed(evt);
+            }
+        });
         addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowClosed(java.awt.event.WindowEvent evt) {
-                formWindowClosed(evt);
-            }
-            public void windowClosing(java.awt.event.WindowEvent evt) {
-                formWindowClosing(evt);
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
             }
         });
 
-        jButton1.setText("Cadastrar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jBCadastrar.setText("Cadastrar");
+        jBCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jBCadastrarActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Remover");
-
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetopoo/Icones/procurar16px.png"))); // NOI18N
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jBRemover.setText("Remover");
+        jBRemover.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jBRemoverActionPerformed(evt);
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jBPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetopoo/Icones/procurar16px.png"))); // NOI18N
+        jBPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBPesquisarActionPerformed(evt);
+            }
+        });
+
+        jTableProfessores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -80,11 +103,12 @@ public class JFGerenciarProfessores extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTableProfessores);
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+        jTPesquisarProfessor.setText("Digite o CPF do professor");
+        jTPesquisarProfessor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTPesquisarProfessorMouseClicked(evt);
             }
         });
 
@@ -100,36 +124,36 @@ public class JFGerenciarProfessores extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(51, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 469, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 499, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(50, 50, 50))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(105, 105, 105)
-                .addComponent(jButton1)
                 .addGap(73, 73, 73)
-                .addComponent(jButton2)
-                .addGap(72, 72, 72)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jTPesquisarProfessor)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jBPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 429, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(53, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jBCadastrar)
+                .addGap(31, 31, 31)
+                .addComponent(jBRemover)
+                .addGap(37, 37, 37)
                 .addComponent(jBVoltar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(125, 125, 125))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(52, 52, 52)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3))
-                .addGap(44, 44, 44)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
+                    .addComponent(jTPesquisarProfessor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBPesquisar))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
+                    .addComponent(jBCadastrar)
+                    .addComponent(jBRemover)
                     .addComponent(jBVoltar))
                 .addGap(52, 52, 52))
         );
@@ -137,35 +161,62 @@ public class JFGerenciarProfessores extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jBCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastrarActionPerformed
         JFCadastrarProfessores jfcadastrarprofessores;
-        jfcadastrarprofessores = new JFCadastrarProfessores();
+        jfcadastrarprofessores = new JFCadastrarProfessores(Usuario);
         dispose();
         jfcadastrarprofessores.setVisible(true);
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jBCadastrarActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+    private void jBPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBPesquisarActionPerformed
         
-    }//GEN-LAST:event_formWindowClosed
-
-    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-
-    }//GEN-LAST:event_formWindowClosing
+        String CPFProfessor = jTPesquisarProfessor.getText();
+        System.out.println("CPF pesquisado: " + CPFProfessor);
+        
+        limpaTabela();
+        
+        for (Professores elementoProfessores: Professores.ListaProfessores) {
+            if (elementoProfessores.getCPF().equals(CPFProfessor)) {
+                tableModel.addRow(new Object[]{elementoProfessores.getNomeProfessor(),elementoProfessores.getCPF(),elementoProfessores.getDisciplinaProfessor().toString().replace("Materia: ", "")});
+            }
+        }
+    }//GEN-LAST:event_jBPesquisarActionPerformed
 
     private void jBVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBVoltarActionPerformed
        JFDiretor jfdiretor = new JFDiretor(Usuario);
        dispose();
        jfdiretor.setVisible(true);
     }//GEN-LAST:event_jBVoltarActionPerformed
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        
+        this.setLocationRelativeTo(null); 
+        
+        for (Professores elementoProfessores: Professores.ListaProfessores) {
+            tableModel.addRow(new Object[]{elementoProfessores.getNomeProfessor(),elementoProfessores.getCPF(),elementoProfessores.getDisciplinaProfessor().toString().replace("Materia: ", "")});
+        }
+        
+    }//GEN-LAST:event_formWindowActivated
+
+    private void jBRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRemoverActionPerformed
+        
+        int linhaselecionada = jTableProfessores.getSelectedRow();
+        
+        String CPFProfessor = jTableProfessores.getValueAt(linhaselecionada, 1).toString();
+        ((DefaultTableModel) jTableProfessores.getModel()).removeRow(linhaselecionada);
+        
+        gerenciarprofessores.removerProfessor(CPFProfessor);
+        
+    }//GEN-LAST:event_jBRemoverActionPerformed
+
+    private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
+        jTPesquisarProfessor.setText("Digite o CPF do professor");
+    }//GEN-LAST:event_formMousePressed
+
+    private void jTPesquisarProfessorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTPesquisarProfessorMouseClicked
+        jTPesquisarProfessor.setText(null);
+    }//GEN-LAST:event_jTPesquisarProfessorMouseClicked
 
     /**
      * @param args the command line arguments
@@ -203,12 +254,12 @@ public class JFGerenciarProfessores extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBCadastrar;
+    private javax.swing.JButton jBPesquisar;
+    private javax.swing.JButton jBRemover;
     private javax.swing.JButton jBVoltar;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTPesquisarProfessor;
+    private javax.swing.JTable jTableProfessores;
     // End of variables declaration//GEN-END:variables
 }
