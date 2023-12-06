@@ -47,6 +47,14 @@ public class Turmas {
         return result.toString();
     }
     
+    public ArrayList<Professores> getListaProfessores(){
+        return this.ListaProfessoresTurma;
+    }
+    
+    public ArrayList<Alunos> getListaAlunos(){
+        return this.ListaAlunosTurma;
+    }
+    
 
 
 

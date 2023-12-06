@@ -269,6 +269,8 @@ public class JFCadastrarTurmas extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Houve um erro ao adicionar o professor a turma. Professor nao encontrado no sistema", "Cadastro de Turmas", JOptionPane.ERROR_MESSAGE);
         }
         
+        jTAdicionarCPFProfessor.setText("");
+        
     }//GEN-LAST:event_jBAdicionarCPFProfessorActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
@@ -299,6 +301,8 @@ public class JFCadastrarTurmas extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Houve um erro ao adicionar o aluno a turma. Aluno nao encontrado no sistema", "Cadastro de Turmas", JOptionPane.ERROR_MESSAGE);
         }
         
+        jTAdicionarRAAluno.setText("");
+        
     }//GEN-LAST:event_jBAdicionarRAAlunoActionPerformed
 
     private void jBCadastrarTurmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastrarTurmaActionPerformed
@@ -320,6 +324,7 @@ public class JFCadastrarTurmas extends javax.swing.JFrame {
             AlunosTurma.add(gerenciaralunos.consultarAlunos(RAAlunos));
         }
         
+        JOptionPane.showMessageDialog(null, "Turma cadastrada com sucesso no sistema.", "Cadastro de Turmas", JOptionPane.INFORMATION_MESSAGE);
         gerenciarturmas.cadastrarTurma(NomeTurma, professoresTurma, AlunosTurma);
         limpaTabelaProfessores();
         limpaTabelaAlunos();

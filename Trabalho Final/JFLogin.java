@@ -5,6 +5,7 @@
 package projetopoo;
 
 import java.awt.event.KeyEvent;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -100,6 +101,11 @@ public class JFLogin extends javax.swing.JFrame {
 
         jLCadastrarSenha.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         jLCadastrarSenha.setText("Cadastrar senha");
+        jLCadastrarSenha.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLCadastrarSenhaMouseClicked(evt);
+            }
+        });
 
         jLSenha.setText("Senha");
 
@@ -185,6 +191,7 @@ public class JFLogin extends javax.swing.JFrame {
         
         inputUsuario = jTUsuario.getText();
         inputSenha = new String(jPSenha.getPassword());
+        Boolean conf = false;
         
         System.out.println("Usuario: " + inputUsuario);
         System.out.println("Senha: " + inputSenha + "\n");
@@ -193,22 +200,29 @@ public class JFLogin extends javax.swing.JFrame {
             dispose();
             JFDiretor jfdiretor = new JFDiretor(inputUsuario);
             jfdiretor.setVisible(true);
+            conf=true;
         }
         
-        for (Alunos elementoAlunos: Alunos.ListaAlunos){
-            if(elementoAlunos.getRA().equals(inputUsuario)){
+        for (Login elementoAlunos: Login.LoginAlunos){
+            if(elementoAlunos.getUsuario().equals(inputUsuario)&& elementoAlunos.getSenha().equals(inputSenha)){
                 JFAluno jfaluno = new JFAluno(inputUsuario);
                 dispose();
                 jfaluno.setVisible(true);
+                conf=true;
             }
         }
         
-        for (Professores elementoProfessores: Professores.ListaProfessores){
-            if(elementoProfessores.getCPF().equals(inputUsuario)){
+        for (Login elementoProfessores: Login.LoginProfessores){
+            if(elementoProfessores.getUsuario().equals(inputUsuario)&& elementoProfessores.getSenha().equals(inputSenha)){
                 JFProfessor jfprofessor = new JFProfessor(inputUsuario);
                 dispose();
                 jfprofessor.setVisible(true);
+                conf=true;
             }
+        }
+        
+        if (!conf) {
+            JOptionPane.showMessageDialog(null, "Nome de usuário ou senha incorretos. Por favor tente novamente.", "Login", JOptionPane.INFORMATION_MESSAGE);
         }
         
     }//GEN-LAST:event_jBLoginActionPerformed
@@ -220,6 +234,13 @@ public class JFLogin extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
        this.setLocationRelativeTo(null);
     }//GEN-LAST:event_formWindowOpened
+
+    private void jLCadastrarSenhaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLCadastrarSenhaMouseClicked
+        
+        JFCadastrarLogin jfcadastrarlogin = new JFCadastrarLogin();
+        jfcadastrarlogin.setVisible(true);
+        
+    }//GEN-LAST:event_jLCadastrarSenhaMouseClicked
 
     /**
      * @param args the command line arguments

@@ -4,7 +4,11 @@
  */
 package projetopoo;
 
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import javax.swing.DefaultCellEditor;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
@@ -16,30 +20,54 @@ public class JFGerenciarTurmas extends javax.swing.JFrame {
 
     String Usuario;
     JFCadastrarTurmas jfcadastrarturmas;
-    private DefaultTableModel tableModel;
+    GerenciarTurmas gerenciarturmas = new GerenciarTurmas();
+    private DefaultTableModel tableModel1;
+    private DefaultTableModel tableModel2;
+     
     
     public JFGerenciarTurmas() {
         initComponents();
         this.Usuario = Usuario;
-        tableModel = new DefaultTableModel();
-        tableModel.addColumn("Nome da Turma");
-        tableModel.addColumn("Alunos");
-        tableModel.addColumn("Professores");
-        jTableTurmas.setModel(tableModel);
-        tableModel.setRowCount(0);
+        
+        tableModel1 = new DefaultTableModel();
+        tableModel1.addColumn("Nome");
+        tableModel1.addColumn("RA");
+        jTableAlunos.setModel(tableModel1);
+        tableModel1.setRowCount(0);
+        
+        tableModel2 = new DefaultTableModel();
+        tableModel2.addColumn("Nome");
+        tableModel2.addColumn("CPF");
+        tableModel2.addColumn("Disciplina");
+        jTableProfessores.setModel(tableModel2);
+        tableModel2.setRowCount(0);
     }
 
     public JFGerenciarTurmas(String Usuario) {
         initComponents();
         this.Usuario = Usuario;
         this.Usuario = Usuario;
-        tableModel = new DefaultTableModel();
-        tableModel.addColumn("Nome da Turma");
-        tableModel.addColumn("Alunos");
-        tableModel.addColumn("Professores");
-        jTableTurmas.setModel(tableModel);
-        tableModel.setRowCount(0);
+        tableModel1 = new DefaultTableModel();
+        tableModel1.addColumn("Nome");
+        tableModel1.addColumn("RA");
+        jTableAlunos.setModel(tableModel1);
+        tableModel1.setRowCount(0);
         
+        tableModel2 = new DefaultTableModel();
+        tableModel2.addColumn("Nome");
+        tableModel2.addColumn("CPF");
+        tableModel2.addColumn("Disciplina");
+        jTableProfessores.setModel(tableModel2);
+        tableModel2.setRowCount(0);
+        
+    }
+    
+    public void limpaTabelaAlunos(){
+        ((DefaultTableModel) jTableAlunos.getModel()).setRowCount(0);
+    }
+    
+        public void limpaTabelaProfessores(){
+        ((DefaultTableModel) jTableProfessores.getModel()).setRowCount(0);
     }
     
     /**
@@ -54,12 +82,13 @@ public class JFGerenciarTurmas extends javax.swing.JFrame {
         jCAlunos = new javax.swing.JComboBox<>();
         jCProfessores = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTableTurmas = new javax.swing.JTable();
-        jTPesquisarTurmas = new javax.swing.JTextField();
-        jBPesquisarTurmas = new javax.swing.JButton();
+        jTableAlunos = new javax.swing.JTable();
         jBCadastrarTurmas = new javax.swing.JButton();
         jBVoltar = new javax.swing.JButton();
         jBRemover = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTableProfessores = new javax.swing.JTable();
+        jCNomeTurma = new javax.swing.JComboBox<>();
 
         jCAlunos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -72,40 +101,18 @@ public class JFGerenciarTurmas extends javax.swing.JFrame {
             }
         });
 
-        jTableTurmas.setModel(new javax.swing.table.DefaultTableModel(
+        jTableAlunos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null},
-                {null},
-                {null},
-                {null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "Nome da Turma"
+                "Nome", "RA"
             }
         ));
-        jScrollPane1.setViewportView(jTableTurmas);
-
-        jTPesquisarTurmas.setText("Digite o nome da turma");
-        jTPesquisarTurmas.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTPesquisarTurmasMouseClicked(evt);
-            }
-        });
-        jTPesquisarTurmas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTPesquisarTurmasActionPerformed(evt);
-            }
-        });
-
-        jBPesquisarTurmas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetopoo/Icones/procurar16px.png"))); // NOI18N
-        jBPesquisarTurmas.setMaximumSize(new java.awt.Dimension(16, 18));
-        jBPesquisarTurmas.setMinimumSize(new java.awt.Dimension(16, 18));
-        jBPesquisarTurmas.setPreferredSize(new java.awt.Dimension(23, 23));
-        jBPesquisarTurmas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBPesquisarTurmasActionPerformed(evt);
-            }
-        });
+        jScrollPane1.setViewportView(jTableAlunos);
 
         jBCadastrarTurmas.setText("Cadastrar");
         jBCadastrarTurmas.addActionListener(new java.awt.event.ActionListener() {
@@ -128,67 +135,68 @@ public class JFGerenciarTurmas extends javax.swing.JFrame {
             }
         });
 
+        jTableProfessores.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Nome", "CPF", "Disciplina"
+            }
+        ));
+        jScrollPane2.setViewportView(jTableProfessores);
+
+        jCNomeTurma.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nome da Turma" }));
+        jCNomeTurma.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCNomeTurmaItemStateChanged(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(63, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jTPesquisarTurmas, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jBPesquisarTurmas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(47, 47, 47))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(48, 48, 48)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(306, 306, 306)
                         .addComponent(jBCadastrarTurmas)
                         .addGap(23, 23, 23)
                         .addComponent(jBRemover)
                         .addGap(18, 18, 18)
-                        .addComponent(jBVoltar)
-                        .addGap(107, 107, 107))))
+                        .addComponent(jBVoltar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(309, 309, 309)
+                        .addComponent(jCNomeTurma, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(58, 58, 58)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTPesquisarTurmas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jBPesquisarTurmas, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(78, 78, 78)
+                .addComponent(jCNomeTurma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(67, 67, 67)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 130, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBCadastrarTurmas)
                     .addComponent(jBVoltar)
                     .addComponent(jBRemover))
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addGap(61, 61, 61))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jTPesquisarTurmasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTPesquisarTurmasMouseClicked
-        jTPesquisarTurmas.setText(null);
-    }//GEN-LAST:event_jTPesquisarTurmasMouseClicked
-
-    private void jBPesquisarTurmasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBPesquisarTurmasActionPerformed
-
-        //String NomeDisciplina = jTPesquisarTurmas.getText();
-        //System.out.println("Disciplina pesquisada: " + NomeDisciplina);
-
-        //limpaTabela();
-
-        //for (Disciplinas elementoDisciplinas: Disciplinas.ListaDisciplinas) {
-            //if (elementoDisciplinas.getNomeDisciplina().equalsIgnoreCase(NomeDisciplina)) {
-            //    tableModel.addRow(new Object[]{elementoDisciplinas.getNomeDisciplina()});
-            //}
-        //}
-
-    }//GEN-LAST:event_jBPesquisarTurmasActionPerformed
 
     private void jBCadastrarTurmasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastrarTurmasActionPerformed
         jfcadastrarturmas = new JFCadastrarTurmas(Usuario);
@@ -204,33 +212,58 @@ public class JFGerenciarTurmas extends javax.swing.JFrame {
 
     private void jBRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRemoverActionPerformed
 
-        //int linhaselecionada = jTableTurmas.getSelectedRow();
-
-        //String NomeDisciplina = jTableTurmas.getValueAt(linhaselecionada, 0).toString();
-       // ((DefaultTableModel) jTableTurmas.getModel()).removeRow(linhaselecionada);
-
-       // gerenciardisciplinas.removerDisciplinas(NomeDisciplina);
-
+        String nomeTurma = jCNomeTurma.getSelectedItem().toString();
+        gerenciarturmas.removerTurma(nomeTurma);
+       
+        limpaTabelaAlunos();
+        limpaTabelaProfessores();
+        jCNomeTurma.removeItemAt(jCNomeTurma.getSelectedIndex());
+       
+        JOptionPane.showMessageDialog(null, "Turma removida com sucesso no sistema.", "Gerenciar Turmas", JOptionPane.INFORMATION_MESSAGE);
+        
     }//GEN-LAST:event_jBRemoverActionPerformed
-
-    private void jTPesquisarTurmasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTPesquisarTurmasActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTPesquisarTurmasActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         
         this.setLocationRelativeTo(null); 
         
-        TableColumn column1 = jTableTurmas.getColumnModel().getColumn(2);
-        column1.setCellEditor(new DefaultCellEditor(jCAlunos));
-        
-        TableColumn column2 = jTableTurmas.getColumnModel().getColumn(3);
-        column2.setCellEditor(new DefaultCellEditor(jCProfessores));
-        
         for (Turmas elementoTurmas: Turmas.ListaTurmas) {
-            tableModel.addRow(new Object[]{elementoTurmas.getNomeTurma(),elementoTurmas.getListaAlunosTurmaString(),elementoTurmas.getListaProfessoresTurmaString()});
+            jCNomeTurma.addItem(elementoTurmas.getNomeTurma());
         }
+        
     }//GEN-LAST:event_formWindowActivated
+
+    private void jCNomeTurmaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCNomeTurmaItemStateChanged
+        
+        String NomeTurma = jCNomeTurma.getSelectedItem().toString();
+        
+        jCNomeTurma.addItemListener(new ItemListener(){
+            
+            public void itemStateChanged(ItemEvent e){
+                
+                if(e.getStateChange()== ItemEvent.SELECTED) {
+                    for (Turmas elementoTurma: Turmas.ListaTurmas) {
+            
+                        if (elementoTurma.getNomeTurma().equals(NomeTurma)) {
+
+                            for (Alunos elementoAluno : elementoTurma.getListaAlunos()) {
+                                tableModel1.addRow(new Object[]{elementoAluno.getNomeAluno(), elementoAluno.getRA()});
+                            }
+
+                            for (Professores elementoProfessores : elementoTurma.getListaProfessores()) {
+                                tableModel2.addRow(new Object[]{elementoProfessores.getNomeProfessor(), elementoProfessores.getCPF(), elementoProfessores.getDisciplinaProfessor()});
+                            }
+
+                        }
+                    }
+                }
+            }
+        });
+        
+
+        
+        
+    }//GEN-LAST:event_jCNomeTurmaItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -269,13 +302,14 @@ public class JFGerenciarTurmas extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBCadastrarTurmas;
-    private javax.swing.JButton jBPesquisarTurmas;
     private javax.swing.JButton jBRemover;
     private javax.swing.JButton jBVoltar;
     private javax.swing.JComboBox<String> jCAlunos;
+    private javax.swing.JComboBox<String> jCNomeTurma;
     private javax.swing.JComboBox<String> jCProfessores;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTPesquisarTurmas;
-    private javax.swing.JTable jTableTurmas;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTableAlunos;
+    private javax.swing.JTable jTableProfessores;
     // End of variables declaration//GEN-END:variables
 }
