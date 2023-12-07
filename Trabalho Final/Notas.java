@@ -38,34 +38,36 @@ public class Notas {
     public Alunos getAluno(){
         return this.aluno;
     }
-
-
-    public String toString(){
-        return "Aluno:" + this.getAluno() +"\n"+ "Nota: " + this.getNota() +"\n";
+    public String getAlunoNome(){
+        return this.aluno.getNomeAluno();
+    }
+    public String getAlunoRA(){
+        return this.aluno.getRA();
     }
 
+
     //Cadastrar
-    public void cadastrarNotas(String CPF){
+    public void cadastrarNotas(String CPF, String RA, Float Nota){
 
-        System.out.println("-------------------Cadastro de Notas-------------------\n");
+        //System.out.println("-------------------Cadastro de Notas-------------------\n");
 
-        String raAluno = "";
-        Float nota = null;
+        //String raAluno = "";
+        //Float nota = null;
 
-        System.out.print("Digite o RA do aluno: ");
-        raAluno = scanner.next();
+        //System.out.print("Digite o RA do aluno: ");
+        //raAluno = scanner.next();
 
-        System.out.print("Digite a nota do aluno: ");
-        nota = Float.valueOf(scanner.next());
+        //System.out.print("Digite a nota do aluno: ");
+        //nota = Float.valueOf(scanner.next());
 
-        Alunos retornoAluno = gerenciarAlunos.consultarAlunos(raAluno);
+        Alunos retornoAluno = gerenciarAlunos.consultarAlunos(RA);
         Professores retornoProfessor = gerenciarProfessores.consultarProfessores(CPF);
 
         if(retornoAluno.getRA().equalsIgnoreCase("")) {
             System.out.println("-------------------------------------------------\n");
 
         }else{
-            Notas notas = new Notas(retornoAluno, nota, retornoProfessor);
+            Notas notas = new Notas(retornoAluno, Nota, retornoProfessor);
             ListaNotas.add(notas);
 
             System.out.println("-------------------------------------------------\n");
@@ -92,7 +94,7 @@ public class Notas {
         System.out.println(retornoDisciplina);
 
         for (Notas elementoRetornoNotas: ListaRetornoNotas) {
-            System.out.println(elementoRetornoNotas);
+            System.out.println(elementoRetornoNotas.getNota());
         }
 
         return ListaRetornoNotas;

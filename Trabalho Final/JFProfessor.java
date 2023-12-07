@@ -11,6 +11,7 @@ package projetopoo;
 public class JFProfessor extends javax.swing.JFrame {
     
     String Usuario;
+    JFNotas jfnotas;
     
     public JFProfessor(String Usuario) {
         initComponents();
@@ -204,7 +205,9 @@ public class JFProfessor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBNotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNotasActionPerformed
-        // TODO add your handling code here:
+        jfnotas = new JFNotas(Usuario);
+        dispose();
+        jfnotas.setVisible(true);
     }//GEN-LAST:event_jBNotasActionPerformed
 
     private void jBQuadraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBQuadraActionPerformed

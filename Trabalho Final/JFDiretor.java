@@ -16,6 +16,7 @@ public class JFDiretor extends javax.swing.JFrame {
     JFGerenciarAlunos jfgerenciaralunos;
     JFGerenciarTurmas jfgerenciarturmas;
     JFGerenciarEventos jfgerenciareventos;
+    JFLogin jflogin = new JFLogin();
     
     String Usuario;
    
@@ -47,6 +48,7 @@ public class JFDiretor extends javax.swing.JFrame {
         jLNomeUsuarioDiretor = new javax.swing.JLabel();
         jLBemVindo = new javax.swing.JLabel();
         jBGerenciarTurmas = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tela Diretor");
@@ -138,6 +140,13 @@ public class JFDiretor extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("X");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -161,6 +170,10 @@ public class JFDiretor extends javax.swing.JFrame {
                         .addComponent(jBGerenciarTurmas, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(64, 64, 64))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -177,7 +190,9 @@ public class JFDiretor extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jBGerenciarTurmas, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jBPalestras, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(83, 83, 83))
+                .addGap(54, 54, 54)
+                .addComponent(jButton1)
+                .addContainerGap())
         );
 
         pack();
@@ -227,6 +242,11 @@ public class JFDiretor extends javax.swing.JFrame {
         jfgerenciareventos.setVisible(true);
     }//GEN-LAST:event_jBPalestrasActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        dispose();
+        jflogin.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -268,6 +288,7 @@ public class JFDiretor extends javax.swing.JFrame {
     private javax.swing.JButton jBGerenciarProfessores;
     private javax.swing.JButton jBGerenciarTurmas;
     private javax.swing.JButton jBPalestras;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLBemVindo;
     private javax.swing.JLabel jLIconeDiretor;
     private javax.swing.JLabel jLNomeUsuarioDiretor;
