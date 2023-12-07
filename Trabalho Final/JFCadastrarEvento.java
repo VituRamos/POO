@@ -9,6 +9,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,6 +18,7 @@ import java.util.logging.Logger;
 public class JFCadastrarEvento extends javax.swing.JFrame {
 
     String Usuario;
+    Eventos evento = new Eventos();
     JFGerenciarEventos jfgerenciareventos;
     SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy"); 
     
@@ -38,7 +40,7 @@ public class JFCadastrarEvento extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup = new javax.swing.ButtonGroup();
         jCTurma = new javax.swing.JComboBox<>();
         jCBPalestra = new javax.swing.JCheckBox();
         jCBVisitaTecnica = new javax.swing.JCheckBox();
@@ -62,10 +64,10 @@ public class JFCadastrarEvento extends javax.swing.JFrame {
             }
         });
 
-        buttonGroup1.add(jCBPalestra);
+        buttonGroup.add(jCBPalestra);
         jCBPalestra.setText("Palestra");
 
-        buttonGroup1.add(jCBVisitaTecnica);
+        buttonGroup.add(jCBVisitaTecnica);
         jCBVisitaTecnica.setText("Visita Tecnica");
 
         jLTurma.setText("Turma");
@@ -187,23 +189,25 @@ public class JFCadastrarEvento extends javax.swing.JFrame {
         String nomeTurma = jCTurma.getSelectedItem().toString();
         String horario = jFTHorario.getValue().toString();
         String obs = jTObs.getText();
-        
-        String dataString = jFTData.getValue().toString();
-        Date data = null;
-        try {
-            data = formato.parse(dataString);
-        } catch (ParseException ex) {
-            Logger.getLogger(JFCadastrarEvento.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        String data = jFTData.getValue().toString();
+        String tipo;
         
         System.out.println(data);
         System.out.println(horario);
         
-        if (jCBVisitaTecnica.isContentAreaFilled()) {
-            String Evento = "Visita Tecnica";
+        if (jCBVisitaTecnica.isSelected()) {
+            tipo = "Visita Tecnica";
         }else{
-            String Evento = "Palestra";
+            tipo = "Palestra";
         }
+        
+        evento.cadastrarEvento(nomeTurma, data, horario, obs, obs, tipo);
+        JOptionPane.showMessageDialog(null, "Evento cadastrado com sucesso no sistema!", "Cadastro de Eventos", JOptionPane.INFORMATION_MESSAGE);
+        
+        buttonGroup.clearSelection();
+        jFTHorario.setValue("");
+        jFTData.setValue("");
+        jTObs.setText("");
         
         
     }//GEN-LAST:event_jBConfirmarActionPerformed
@@ -212,9 +216,6 @@ public class JFCadastrarEvento extends javax.swing.JFrame {
 
         this.setLocationRelativeTo(null);
         
-        for (Turmas elementoTurmas: Turmas.ListaTurmas) {
-            jCTurma.addItem(elementoTurmas.getNomeTurma());
-        }
         
     }//GEN-LAST:event_formWindowActivated
 
@@ -228,6 +229,10 @@ public class JFCadastrarEvento extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         
         this.setLocationRelativeTo(null);
+        
+        for (Turmas elementoTurmas: Turmas.ListaTurmas) {
+            jCTurma.addItem(elementoTurmas.getNomeTurma());
+        }
         
     }//GEN-LAST:event_formWindowOpened
 
@@ -271,7 +276,7 @@ public class JFCadastrarEvento extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup;
     private javax.swing.JButton jBConfirmar;
     private javax.swing.JButton jBVoltar;
     private javax.swing.JCheckBox jCBPalestra;

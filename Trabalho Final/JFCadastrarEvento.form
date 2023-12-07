@@ -2,7 +2,7 @@
 
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <NonVisualComponents>
-    <Component class="javax.swing.ButtonGroup" name="buttonGroup1">
+    <Component class="javax.swing.ButtonGroup" name="buttonGroup">
     </Component>
   </NonVisualComponents>
   <Properties>
@@ -121,7 +121,7 @@
     <Component class="javax.swing.JCheckBox" name="jCBPalestra">
       <Properties>
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-          <ComponentRef name="buttonGroup1"/>
+          <ComponentRef name="buttonGroup"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Palestra"/>
       </Properties>
@@ -129,7 +129,7 @@
     <Component class="javax.swing.JCheckBox" name="jCBVisitaTecnica">
       <Properties>
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-          <ComponentRef name="buttonGroup1"/>
+          <ComponentRef name="buttonGroup"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Visita Tecnica"/>
       </Properties>

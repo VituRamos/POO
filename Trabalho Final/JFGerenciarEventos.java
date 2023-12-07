@@ -4,6 +4,8 @@
  */
 package projetopoo;
 
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author victo
@@ -13,14 +15,32 @@ public class JFGerenciarEventos extends javax.swing.JFrame {
     String Usuario;
     JFCadastrarEvento jfcadastrarevento;
     JFDiretor jfdiretor;
+    private DefaultTableModel tableModel;
     
     public JFGerenciarEventos() {
         initComponents();
+        tableModel = new DefaultTableModel();
+        tableModel.addColumn("Nome da Turma");
+        tableModel.addColumn("Evento");
+        tableModel.addColumn("Data");
+        tableModel.addColumn("Horario");
+        tableModel.addColumn("Observacao");
+        jTableEventos.setModel(tableModel);
+        tableModel.setRowCount(0);
     }
     
     public JFGerenciarEventos(String Usuario) {
         initComponents();
         this.Usuario = Usuario;
+        tableModel = new DefaultTableModel();
+        tableModel.addColumn("Nome da Turma");
+        tableModel.addColumn("Evento");
+        tableModel.addColumn("Data");
+        tableModel.addColumn("Horario");
+        tableModel.addColumn("Observacao");
+        jTableEventos.setModel(tableModel);
+        tableModel.setRowCount(0);
+            
     }
 
     /**
@@ -79,14 +99,14 @@ public class JFGerenciarEventos extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(147, 147, 147)
+                .addGap(182, 182, 182)
                 .addComponent(jBCadastrar)
-                .addGap(73, 73, 73)
+                .addGap(149, 149, 149)
                 .addComponent(jBVoltar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(58, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(56, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 545, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(59, 59, 59))
         );
         layout.setVerticalGroup(
@@ -98,7 +118,7 @@ public class JFGerenciarEventos extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBCadastrar)
                     .addComponent(jBVoltar))
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
 
         pack();
@@ -119,6 +139,16 @@ public class JFGerenciarEventos extends javax.swing.JFrame {
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
        
         this.setLocationRelativeTo(null);
+        
+        for (Eventos elementoEventos: Eventos.ListaEventos) {
+            if (elementoEventos.getTipo().equals("Visita Tecnica")) {
+                Eventos.VisitasTecnicas elemento = (Eventos.VisitasTecnicas) elementoEventos;
+                tableModel.addRow(new Object[]{elementoEventos.getNomeTurma(),elementoEventos.getTipo(),elementoEventos.getData(),elementoEventos.getHorario(),elemento.getLocal()});
+            }else{
+                Eventos.Palestras elemento = (Eventos.Palestras) elementoEventos;
+                tableModel.addRow(new Object[]{elementoEventos.getNomeTurma(),elementoEventos.getTipo(),elementoEventos.getData(),elementoEventos.getHorario(),elemento.getPalestrante()});
+            }
+        }
         
     }//GEN-LAST:event_formWindowActivated
 

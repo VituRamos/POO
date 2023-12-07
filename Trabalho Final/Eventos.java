@@ -2,25 +2,21 @@
 package projetopoo;
 
 import java.util.ArrayList;
-import java.util.Date;
-
 
 public class Eventos {
 
-
-
-    
     private String nomeTurma;
-    private Date data;
+    private String data;
     private String horario;
+    private String tipo;
 
+    static ArrayList<Eventos> ListaEventos = new ArrayList<>();
     
-    private static ArrayList<Eventos> ListaEventos = new ArrayList<>();
-    
-    public Eventos(String nomeTurma, Date data, String horario){
+    public Eventos(String nomeTurma, String data, String horario, String tipo){
         setNomeTurma(nomeTurma);
         setData(data);
         setHorario(horario);
+        setTipo(tipo);
     }
     
     public Eventos(){  
@@ -30,12 +26,10 @@ public class Eventos {
         public class VisitasTecnicas extends Eventos{
         
             private String Local;
-            private String Tipo;
             
-            public VisitasTecnicas(String nomeTurma, Date data, String horario, String Local, String Tipo){
-               super(nomeTurma,data,horario);
+            public VisitasTecnicas(String nomeTurma, String data, String horario, String Local, String tipo){
+               super(nomeTurma,data,horario,tipo);
                setLocal(Local);
-               setTipo(Tipo);
             }
             
             public VisitasTecnicas(){
@@ -49,13 +43,6 @@ public class Eventos {
                 this.Local = Local;
             }
             
-            public String getTipo(){
-                return Tipo;
-            }
-            
-            public void setTipo(String Tipo){
-                this.Tipo = Tipo;
-            }
         }
     
         
@@ -64,12 +51,10 @@ public class Eventos {
         public class Palestras extends Eventos{
         
             private String Palestrante;
-            private String Tipo;
             
-            public Palestras(String nomeTurma, Date data, String horario, String Palestrante, String Tipo){
-               super(nomeTurma,data,horario);
+            public Palestras(String nomeTurma, String data, String horario, String Palestrante, String tipo){
+               super(nomeTurma,data,horario,tipo);
                setPalestrante(Palestrante);
-               setTipo(Tipo);
             }
             
             public Palestras(){
@@ -82,14 +67,6 @@ public class Eventos {
             public void setPalestrante(String Palestrante) {
                 this.Palestrante = Palestrante;
             }
-            
-            public String getTipo(){
-                return Tipo;
-            }
-            
-            public void setTipo(String Tipo){
-                this.Tipo = Tipo;
-            }
         
         }
     
@@ -97,9 +74,9 @@ public class Eventos {
         
         
         
-    public void cadastrarEvento(String nomeTurma, Date data, String horario, String Palestrante, String Local, String Tipo){
+    public void cadastrarEvento(String nomeTurma, String data, String horario, String Palestrante, String Local, String Tipo){
         
-        Eventos evento = new Eventos();
+        Eventos evento;
         
         if (Tipo.equals("Visita Tecnica")) {
             
@@ -115,6 +92,8 @@ public class Eventos {
         
     }
     
+    
+    
     public String getNomeTurma() {
         return nomeTurma;
     }
@@ -123,11 +102,11 @@ public class Eventos {
         this.nomeTurma = nomeTurma;
     }
 
-    public Date getData() {
+    public String getData() {
         return data;
     }
 
-    public void setData(Date data) {
+    public void setData(String data) {
         this.data = data;
     }
 
@@ -137,6 +116,14 @@ public class Eventos {
 
     public void setHorario(String horario) {
         this.horario = horario;
+    }
+    
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
     
     

@@ -214,11 +214,15 @@ public class JFGerenciarTurmas extends javax.swing.JFrame {
 
         String nomeTurma = jCNomeTurma.getSelectedItem().toString();
         gerenciarturmas.removerTurma(nomeTurma);
-       
+        
+        jCNomeTurma.removeAllItems();
+        jCNomeTurma.addItem("Nome da Turma");
+        
         limpaTabelaAlunos();
         limpaTabelaProfessores();
         jCNomeTurma.removeItemAt(jCNomeTurma.getSelectedIndex());
-       
+        
+        
         JOptionPane.showMessageDialog(null, "Turma removida com sucesso no sistema.", "Gerenciar Turmas", JOptionPane.INFORMATION_MESSAGE);
         
     }//GEN-LAST:event_jBRemoverActionPerformed
@@ -231,17 +235,25 @@ public class JFGerenciarTurmas extends javax.swing.JFrame {
             jCNomeTurma.addItem(elementoTurmas.getNomeTurma());
         }
         
+        if (jCNomeTurma.getItemCount()>1) {
+            jCNomeTurma.removeItemAt(0);
+        }
+        
     }//GEN-LAST:event_formWindowActivated
 
     private void jCNomeTurmaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCNomeTurmaItemStateChanged
-        
-        String NomeTurma = jCNomeTurma.getSelectedItem().toString();
         
         jCNomeTurma.addItemListener(new ItemListener(){
             
             public void itemStateChanged(ItemEvent e){
                 
                 if(e.getStateChange()== ItemEvent.SELECTED) {
+                    
+                    limpaTabelaAlunos();
+                    limpaTabelaProfessores();
+                    
+                    String NomeTurma = jCNomeTurma.getSelectedItem().toString();
+                    
                     for (Turmas elementoTurma: Turmas.ListaTurmas) {
             
                         if (elementoTurma.getNomeTurma().equals(NomeTurma)) {
@@ -259,8 +271,6 @@ public class JFGerenciarTurmas extends javax.swing.JFrame {
                 }
             }
         });
-        
-
         
         
     }//GEN-LAST:event_jCNomeTurmaItemStateChanged
