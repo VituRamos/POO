@@ -49,33 +49,52 @@ public class Login {
     public Boolean cadastrarLogin(String Usuario,String Senha){
         
         Login novologin = new Login();
-        Boolean conf = false;
+        
+        Boolean confSistema = false;
+        Boolean confLogin = false;
+        
+        for (Login elementoLogin : LoginProfessores) {
+            if (elementoLogin.getUsuario().equals(Usuario)) {
+                JOptionPane.showMessageDialog(null, "CPF ou RA ja cadastrado no sistema de login", "Cadastro de Login", JOptionPane.INFORMATION_MESSAGE);
+                confLogin = true;
+            }
+        }
+        
+        for (Login elementoLogin : LoginAlunos) {
+            if (elementoLogin.getUsuario().equals(Usuario)) {
+                JOptionPane.showMessageDialog(null, "CPF ou RA ja cadastrado no sistema de login", "Cadastro de Login", JOptionPane.INFORMATION_MESSAGE);
+                confLogin = true;
+            }
+        }
+        
         
         for (Professores elementoProfessor: Professores.ListaProfessores) {
             
-            if (Usuario.equals(elementoProfessor.getCPF())) {
+            if (Usuario.equals(elementoProfessor.getCPF()) && !confLogin) {
                 
                 novologin = new Login(Usuario,Senha);
                 Login.LoginProfessores.add(novologin);
-                conf = true;
+                confSistema = true;
             }
         }
         
         for (Alunos elementoAluno: Alunos.ListaAlunos) {
             
-            if (Usuario.equals(elementoAluno.getRA())) {
+            if (Usuario.equals(elementoAluno.getRA()) && !confLogin) {
                 
                 novologin = new Login(Usuario,Senha);
                 Login.LoginAlunos.add(novologin);
-                conf = true;
+                confSistema = true;
             }
         }
         
-        if (!conf) {
+        if (!confSistema && !confLogin) {
             JOptionPane.showMessageDialog(null, "CPF ou RA nao encontrado no sistema", "Cadastro de Login", JOptionPane.INFORMATION_MESSAGE);
         }
+   
+
         
-        return conf;
+        return confSistema;
         
     }
 

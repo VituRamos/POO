@@ -2,6 +2,7 @@ package projetopoo;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 public class GerenciarTurmas {
 
@@ -12,24 +13,17 @@ public class GerenciarTurmas {
 
 
     public void cadastrarTurma(String nomeTurma,ArrayList<Professores> ListaProfessoresTurma, ArrayList<Alunos> ListaAlunosTurma){
-
-        System.out.println("\n--------------------Cadastro de Turmas--------------------");
-
-        //ArrayList<Professores> professoresTurma = cadastraListaProfessoresTurma();
-        //ArrayList<Alunos> alunosTurma = cadastraListaAlunosTurma();
-
+        
+        for (Turmas elementoTurma: Turmas.ListaTurmas) {
+            if (elementoTurma.getNomeTurma().equals(nomeTurma)){
+                JOptionPane.showMessageDialog(null, "A turma ja esta cadastrada no sistema.", "Cadastro de Login", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+        }
+        
         Turmas turma = new Turmas(nomeTurma,ListaProfessoresTurma,ListaAlunosTurma);
         Turmas.ListaTurmas.add(turma);
-
-        System.out.println("\n---------------------Turma Cadastrada---------------------");
-
-        for (Turmas elementoTurmas : Turmas.ListaTurmas) {
-            System.out.print(elementoTurmas);
-        }
-
-        System.out.println("----------------------------------------------------------\n");
-        System.out.println("\nCadastro efetuado com sucesso ✔️\n");
-
+        JOptionPane.showMessageDialog(null, "Turma cadastrada com sucesso no sistema!.", "Cadastro de Login", JOptionPane.INFORMATION_MESSAGE);
     }
 
     public ArrayList<Professores> cadastraListaProfessoresTurma(){

@@ -324,13 +324,13 @@ public class JFCadastrarTurmas extends javax.swing.JFrame {
             AlunosTurma.add(gerenciaralunos.consultarAlunos(RAAlunos));
         }
         
-        JOptionPane.showMessageDialog(null, "Turma cadastrada com sucesso no sistema.", "Cadastro de Turmas", JOptionPane.INFORMATION_MESSAGE);
         gerenciarturmas.cadastrarTurma(NomeTurma, professoresTurma, AlunosTurma);
         limpaTabelaProfessores();
         limpaTabelaAlunos();
         jTCadastrarNomeTurma.setText("");
         jTAdicionarCPFProfessor.setText("");
         jTAdicionarRAAluno.setText("");
+       
         
     }//GEN-LAST:event_jBCadastrarTurmaActionPerformed
 

@@ -34,6 +34,11 @@ public class JFCadastrarAluno extends javax.swing.JFrame {
         jbVoltar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jLabel1.setText("Nome:");
 
@@ -130,7 +135,11 @@ public class JFCadastrarAluno extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tfRAActionPerformed
 
-    private void jbVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbVoltarActionPerformed
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        this.setLocationRelativeTo(null);
+    }//GEN-LAST:event_formWindowOpened
+
+    private void jbVoltarActionPerformed(java.awt.event.ActionEvent evt) {                                         
         JFGerenciarAlunos jfgerenciaralunos= new JFGerenciarAlunos(Usuario);
         dispose();
         jfgerenciaralunos.setVisible(true);
