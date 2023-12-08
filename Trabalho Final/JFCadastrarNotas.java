@@ -5,6 +5,7 @@
 package projetopoo;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -24,6 +25,16 @@ public class JFCadastrarNotas extends javax.swing.JFrame {
     public JFCadastrarNotas() {
         initComponents();
     }
+    
+    public class ExceptionPersonalizada extends NumberFormatException{
+        
+        public ExceptionPersonalizada(String mensagem){
+            super(mensagem);
+        }
+        
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -150,9 +161,27 @@ public class JFCadastrarNotas extends javax.swing.JFrame {
     private void jBConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConfirmarActionPerformed
         
         String RA = jCBAluno.getSelectedItem().toString();
-        Float Nota = Float.valueOf(jTFNota.getText());
+        float Nota= 0.0f;
         
-        notas.cadastrarNotas(Usuario, RA, Nota);
+        try {
+            
+            String NotaString = jTFNota.getText();
+            
+            if (NotaString.matches("\\d+(\\.\\d+)?")) {
+                
+                Nota = Float.parseFloat(NotaString);
+                notas.cadastrarNotas(Usuario, RA, Nota);
+                JOptionPane.showMessageDialog(null, "Nota cadastrada com sucesso!", "Cadastro de Notas", JOptionPane.INFORMATION_MESSAGE);
+                
+            }else{
+                throw new ExceptionPersonalizada("Erro nota\n");
+            }
+            
+        } catch (ExceptionPersonalizada e) {
+            System.out.print("Exception Personalizada: "+e.getMessage());
+            JOptionPane.showMessageDialog(null, "Erro ao cadastrar nota. Insira apenas numeros.", "Cadastro de Notas", JOptionPane.ERROR_MESSAGE);
+
+        }
         
         jTFNota.setText("");
         

@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
  */
 public class JFLogin extends javax.swing.JFrame {
 
-    Diretor diretor = new Diretor("diretor","senha");
+    Diretor diretor = new Diretor("diretor","123");
     Alunos alunos = new Alunos();
     Professores professores = new Professores();
     
