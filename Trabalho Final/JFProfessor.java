@@ -12,6 +12,7 @@ public class JFProfessor extends javax.swing.JFrame {
     
     String Usuario;
     JFNotas jfnotas;
+    JFLogin jflogin = new JFLogin();
     
     public JFProfessor(String Usuario) {
         initComponents();
@@ -46,6 +47,9 @@ public class JFProfessor extends javax.swing.JFrame {
         jLBemVindo = new javax.swing.JLabel();
         jLNomeProfessor = new javax.swing.JLabel();
         jLDisciplinaProfessor = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jBSair = new javax.swing.JButton();
 
         jFrame1.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -100,6 +104,7 @@ public class JFProfessor extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tela Professor");
         setLocation(new java.awt.Point(0, 0));
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
@@ -109,31 +114,52 @@ public class JFProfessor extends javax.swing.JFrame {
             }
         });
 
+        jBNotas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetopoo/Icones/exame.png"))); // NOI18N
         jBNotas.setText("Notas");
+        jBNotas.setFocusPainted(false);
+        jBNotas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBNotas.setIconTextGap(25);
+        jBNotas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jBNotas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBNotasActionPerformed(evt);
             }
         });
 
+        jBQuadra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetopoo/Icones/campo-de-futebol.png"))); // NOI18N
         jBQuadra.setText("Quadra");
+        jBQuadra.setFocusPainted(false);
+        jBQuadra.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBQuadra.setIconTextGap(25);
+        jBQuadra.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jBQuadra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBQuadraActionPerformed(evt);
             }
         });
 
+        jBNotasSimulados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetopoo/Icones/lista-de-controle (1).png"))); // NOI18N
         jBNotasSimulados.setText("Notas Simulados");
+        jBNotasSimulados.setFocusPainted(false);
+        jBNotasSimulados.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBNotasSimulados.setIconTextGap(25);
+        jBNotasSimulados.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
         jPanelProfessor.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.lightGray, java.awt.Color.white, java.awt.Color.gray, java.awt.Color.lightGray));
 
         jLabelIconeProfessor.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelIconeProfessor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetopoo/Icones/Diretor64px.png"))); // NOI18N
-        jLabelIconeProfessor.setText("ICONE TOP");
+        jLabelIconeProfessor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetopoo/Icones/professor.png"))); // NOI18N
         jLabelIconeProfessor.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jLabelIconeProfessor.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
+        jLBemVindo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLBemVindo.setText("Bem vindo,");
+
+        jLNomeProfessor.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+
+        jLabel1.setText("Usuario:");
+
+        jLabel2.setText("Disciplina:");
 
         javax.swing.GroupLayout jPanelProfessorLayout = new javax.swing.GroupLayout(jPanelProfessor);
         jPanelProfessor.setLayout(jPanelProfessorLayout);
@@ -143,14 +169,16 @@ public class JFProfessor extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addComponent(jLabelIconeProfessor, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelProfessorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLBemVindo)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelProfessorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanelProfessorLayout.createSequentialGroup()
-                        .addComponent(jLBemVindo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLNomeProfessor, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLDisciplinaProfessor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLUsuarioProfessor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(170, Short.MAX_VALUE))
+                    .addComponent(jLUsuarioProfessor, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
+                    .addComponent(jLNomeProfessor, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLDisciplinaProfessor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         jPanelProfessorLayout.setVerticalGroup(
             jPanelProfessorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -162,43 +190,71 @@ public class JFProfessor extends javax.swing.JFrame {
                             .addComponent(jLBemVindo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLNomeProfessor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
-                        .addComponent(jLUsuarioProfessor, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanelProfessorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLUsuarioProfessor, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLDisciplinaProfessor, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGroup(jPanelProfessorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelProfessorLayout.createSequentialGroup()
+                                .addComponent(jLDisciplinaProfessor, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelProfessorLayout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jLabel2))))
                     .addGroup(jPanelProfessorLayout.createSequentialGroup()
                         .addGap(19, 19, 19)
                         .addComponent(jLabelIconeProfessor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(23, 23, 23))
         );
 
+        jBSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetopoo/Icones/seta-para-a-esquerda.png"))); // NOI18N
+        jBSair.setFocusPainted(false);
+        jBSair.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBSair.setMaximumSize(new java.awt.Dimension(16, 16));
+        jBSair.setMinimumSize(new java.awt.Dimension(16, 16));
+        jBSair.setPreferredSize(new java.awt.Dimension(22, 22));
+        jBSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBSairActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(73, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jBNotasSimulados, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(102, 102, 102)
-                        .addComponent(jBNotas, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jBQuadra, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanelProfessor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(57, Short.MAX_VALUE)
+                .addComponent(jBNotasSimulados, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 118, Short.MAX_VALUE)
+                .addComponent(jBNotas, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(98, 98, 98)
+                .addComponent(jBQuadra, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(54, 54, 54))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jBSair, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(130, 130, 130)
+                        .addComponent(jPanelProfessor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(52, 52, 52)
+                .addContainerGap()
+                .addComponent(jBSair, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21)
                 .addComponent(jPanelProfessor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(82, 82, 82)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBNotasSimulados, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jBNotas, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jBQuadra, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(132, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jBNotas, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jBQuadra, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jBNotasSimulados, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(106, 106, 106))
         );
 
         pack();
@@ -240,6 +296,11 @@ public class JFProfessor extends javax.swing.JFrame {
         
     }//GEN-LAST:event_formWindowActivated
 
+    private void jBSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSairActionPerformed
+        dispose();
+        jflogin.setVisible(true);
+    }//GEN-LAST:event_jBSairActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -275,6 +336,7 @@ public class JFProfessor extends javax.swing.JFrame {
     private javax.swing.JButton jBNotas;
     private javax.swing.JButton jBNotasSimulados;
     private javax.swing.JButton jBQuadra;
+    private javax.swing.JButton jBSair;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -285,6 +347,8 @@ public class JFProfessor extends javax.swing.JFrame {
     private javax.swing.JLabel jLDisciplinaProfessor;
     private javax.swing.JLabel jLNomeProfessor;
     private javax.swing.JLabel jLUsuarioProfessor;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelIconeProfessor;
     private javax.swing.JPanel jPanelProfessor;
     // End of variables declaration//GEN-END:variables

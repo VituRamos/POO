@@ -11,7 +11,7 @@ package projetopoo;
 public class JFAluno extends javax.swing.JFrame {
 
     String Usuario;
-
+    JFLogin jflogin = new JFLogin();
     
     public JFAluno(String Usuario) {
         initComponents();
@@ -33,16 +33,18 @@ public class JFAluno extends javax.swing.JFrame {
 
         jBBoletim = new javax.swing.JButton();
         jBSimulados = new javax.swing.JButton();
-        jBConsultarMerenda = new javax.swing.JButton();
         jPanelAluno = new javax.swing.JPanel();
         jLabelIconeAluno = new javax.swing.JLabel();
         jLNomeAluno = new javax.swing.JLabel();
         jLBemVindo = new javax.swing.JLabel();
         jLUsuarioAluno = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jBSair = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tela Aluno");
         setLocation(new java.awt.Point(0, 0));
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
@@ -52,42 +54,58 @@ public class JFAluno extends javax.swing.JFrame {
             }
         });
 
+        jBBoletim.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetopoo/Icones/exame.png"))); // NOI18N
         jBBoletim.setText("Boletim");
+        jBBoletim.setFocusPainted(false);
+        jBBoletim.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBBoletim.setIconTextGap(25);
+        jBBoletim.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
+        jBSimulados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetopoo/Icones/lista-de-controle (1).png"))); // NOI18N
         jBSimulados.setText("Simulados");
+        jBSimulados.setFocusPainted(false);
+        jBSimulados.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBSimulados.setIconTextGap(25);
+        jBSimulados.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jBSimulados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBSimuladosActionPerformed(evt);
             }
         });
 
-        jBConsultarMerenda.setText("Consultar Merenda");
-
         jPanelAluno.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.lightGray, java.awt.Color.white, java.awt.Color.gray, java.awt.Color.lightGray));
 
         jLabelIconeAluno.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelIconeAluno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetopoo/Icones/Diretor64px.png"))); // NOI18N
-        jLabelIconeAluno.setText("ICONE TOP");
+        jLabelIconeAluno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetopoo/Icones/aluna_1.png"))); // NOI18N
         jLabelIconeAluno.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jLabelIconeAluno.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
+        jLNomeAluno.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+
+        jLBemVindo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLBemVindo.setText("Bem vindo,");
+
+        jLabel1.setText("Usuario:");
+        jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout jPanelAlunoLayout = new javax.swing.GroupLayout(jPanelAluno);
         jPanelAluno.setLayout(jPanelAlunoLayout);
         jPanelAlunoLayout.setHorizontalGroup(
             jPanelAlunoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelAlunoLayout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(jLabelIconeAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(36, 36, 36)
+                .addComponent(jLabelIconeAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
                 .addGroup(jPanelAlunoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelAlunoLayout.createSequentialGroup()
                         .addComponent(jLBemVindo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLNomeAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLUsuarioAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(181, Short.MAX_VALUE))
+                    .addGroup(jPanelAlunoLayout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLUsuarioAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelAlunoLayout.setVerticalGroup(
             jPanelAlunoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -97,38 +115,57 @@ public class JFAluno extends javax.swing.JFrame {
                 .addGap(23, 23, 23))
             .addGroup(jPanelAlunoLayout.createSequentialGroup()
                 .addGap(29, 29, 29)
-                .addGroup(jPanelAlunoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLNomeAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLBemVindo))
+                .addGroup(jPanelAlunoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLBemVindo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLNomeAluno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addComponent(jLUsuarioAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanelAlunoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLUsuarioAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        jBSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetopoo/Icones/seta-para-a-esquerda.png"))); // NOI18N
+        jBSair.setFocusPainted(false);
+        jBSair.setMaximumSize(new java.awt.Dimension(16, 16));
+        jBSair.setMinimumSize(new java.awt.Dimension(16, 16));
+        jBSair.setPreferredSize(new java.awt.Dimension(22, 22));
+        jBSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBSairActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(65, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 160, Short.MAX_VALUE)
                         .addComponent(jBBoletim, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(95, 95, 95)
+                        .addGap(119, 119, 119)
                         .addComponent(jBSimulados, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jBConsultarMerenda, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanelAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(59, 59, 59))
+                        .addGap(187, 187, 187))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jBSair, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(128, 128, 128)
+                .addComponent(jPanelAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(38, 38, 38)
+                .addContainerGap()
+                .addComponent(jBSair, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19)
                 .addComponent(jPanelAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 117, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBConsultarMerenda, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jBSimulados, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jBBoletim, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(142, 142, 142))
@@ -164,6 +201,11 @@ public class JFAluno extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_formWindowActivated
+
+    private void jBSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSairActionPerformed
+        dispose();
+        jflogin.setVisible(true);
+    }//GEN-LAST:event_jBSairActionPerformed
 
     /**
      * @param args the command line arguments
@@ -202,11 +244,12 @@ public class JFAluno extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBBoletim;
-    private javax.swing.JButton jBConsultarMerenda;
+    private javax.swing.JButton jBSair;
     private javax.swing.JButton jBSimulados;
     private javax.swing.JLabel jLBemVindo;
     private javax.swing.JLabel jLNomeAluno;
     private javax.swing.JLabel jLUsuarioAluno;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelIconeAluno;
     private javax.swing.JPanel jPanelAluno;
     // End of variables declaration//GEN-END:variables

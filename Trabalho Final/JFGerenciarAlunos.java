@@ -54,6 +54,7 @@ public class JFGerenciarAlunos extends javax.swing.JFrame {
         jBRemover = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
@@ -163,7 +164,7 @@ public class JFGerenciarAlunos extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTPesquisarAlunoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTPesquisarAlunoMouseClicked
+    private void jTPesquisarAlunoMouseClicked(java.awt.event.MouseEvent evt) {                                              
         jTPesquisarAluno.setText(null);
     }
 
@@ -171,19 +172,19 @@ public class JFGerenciarAlunos extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTPesquisarAlunoActionPerformed
 
-    private void jBCadastrarAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastrarAlunoActionPerformed
+    private void jBCadastrarAlunoActionPerformed(java.awt.event.ActionEvent evt) {                                                 
         jfcadastraralunos = new JFCadastrarAluno(Usuario);
         dispose();
         jfcadastraralunos.setVisible(true);
     }
 
-    private void jBVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBVoltarActionPerformed
+    private void jBVoltarActionPerformed(java.awt.event.ActionEvent evt) {                                         
        JFDiretor jfdiretor= new JFDiretor(Usuario);
        dispose();
        jfdiretor.setVisible(true);
     }
 
-    private void jBPesquisarAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBPesquisarAlunoActionPerformed
+    private void jBPesquisarAlunoActionPerformed(java.awt.event.ActionEvent evt) {                                                 
         
         String RA =jTPesquisarAluno.getText();
         System.out.println("RA pesquisado:" + RA);
@@ -197,7 +198,7 @@ public class JFGerenciarAlunos extends javax.swing.JFrame {
         }
     }
 
-    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {                                     
         
         this.setLocationRelativeTo(null); 
         

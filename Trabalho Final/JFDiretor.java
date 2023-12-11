@@ -48,11 +48,12 @@ public class JFDiretor extends javax.swing.JFrame {
         jLNomeUsuarioDiretor = new javax.swing.JLabel();
         jLBemVindo = new javax.swing.JLabel();
         jBGerenciarTurmas = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        jBSair = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tela Diretor");
         setLocation(new java.awt.Point(0, 0));
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
@@ -62,10 +63,13 @@ public class JFDiretor extends javax.swing.JFrame {
             }
         });
 
+        jBGerenciarProfessores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetopoo/Icones/graduacao.png"))); // NOI18N
         jBGerenciarProfessores.setText("Gerenciar Professores");
         jBGerenciarProfessores.setToolTipText("");
         jBGerenciarProfessores.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jBGerenciarProfessores.setFocusPainted(false);
         jBGerenciarProfessores.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBGerenciarProfessores.setIconTextGap(25);
         jBGerenciarProfessores.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jBGerenciarProfessores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -73,22 +77,35 @@ public class JFDiretor extends javax.swing.JFrame {
             }
         });
 
+        jBGerenciarAlunos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetopoo/Icones/aluna.png"))); // NOI18N
         jBGerenciarAlunos.setText("Gerenciar Alunos");
+        jBGerenciarAlunos.setFocusPainted(false);
+        jBGerenciarAlunos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBGerenciarAlunos.setIconTextGap(25);
+        jBGerenciarAlunos.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jBGerenciarAlunos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBGerenciarAlunosActionPerformed(evt);
             }
         });
 
+        jBGerenciarDisciplinas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetopoo/Icones/livro.png"))); // NOI18N
         jBGerenciarDisciplinas.setText("Gerenciar Disciplinas");
+        jBGerenciarDisciplinas.setFocusPainted(false);
+        jBGerenciarDisciplinas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBGerenciarDisciplinas.setIconTextGap(25);
+        jBGerenciarDisciplinas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jBGerenciarDisciplinas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBGerenciarDisciplinasActionPerformed(evt);
             }
         });
 
+        jBPalestras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetopoo/Icones/calendario.png"))); // NOI18N
         jBPalestras.setText("Eventos");
+        jBPalestras.setFocusPainted(false);
         jBPalestras.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBPalestras.setIconTextGap(25);
         jBPalestras.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jBPalestras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -99,11 +116,15 @@ public class JFDiretor extends javax.swing.JFrame {
         jPanelDiretor.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.lightGray, java.awt.Color.white, java.awt.Color.gray, java.awt.Color.lightGray));
 
         jLIconeDiretor.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLIconeDiretor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetopoo/Icones/Diretor64px.png"))); // NOI18N
-        jLIconeDiretor.setText("ICONE TOP");
+        jLIconeDiretor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetopoo/Icones/patrao.png"))); // NOI18N
         jLIconeDiretor.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jLIconeDiretor.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
+        jLNomeUsuarioDiretor.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLNomeUsuarioDiretor.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLNomeUsuarioDiretor.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        jLBemVindo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLBemVindo.setText("Bem vindo,");
 
         javax.swing.GroupLayout jPanelDiretorLayout = new javax.swing.GroupLayout(jPanelDiretor);
@@ -111,39 +132,49 @@ public class JFDiretor extends javax.swing.JFrame {
         jPanelDiretorLayout.setHorizontalGroup(
             jPanelDiretorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelDiretorLayout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addComponent(jLIconeDiretor, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52)
-                .addComponent(jLBemVindo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLNomeUsuarioDiretor, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(183, Short.MAX_VALUE))
+                .addGroup(jPanelDiretorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelDiretorLayout.createSequentialGroup()
+                        .addGap(79, 79, 79)
+                        .addGroup(jPanelDiretorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLBemVindo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLIconeDiretor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jPanelDiretorLayout.createSequentialGroup()
+                        .addGap(69, 69, 69)
+                        .addComponent(jLNomeUsuarioDiretor, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
         jPanelDiretorLayout.setVerticalGroup(
             jPanelDiretorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelDiretorLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(jLIconeDiretor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelDiretorLayout.createSequentialGroup()
+                .addContainerGap(27, Short.MAX_VALUE)
+                .addComponent(jLIconeDiretor, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLBemVindo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLNomeUsuarioDiretor, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(23, 23, 23))
-            .addGroup(jPanelDiretorLayout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addGroup(jPanelDiretorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLNomeUsuarioDiretor, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLBemVindo))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jBGerenciarTurmas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetopoo/Icones/equipe.png"))); // NOI18N
         jBGerenciarTurmas.setText("Gerenciar Turmas");
+        jBGerenciarTurmas.setFocusPainted(false);
+        jBGerenciarTurmas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBGerenciarTurmas.setIconTextGap(25);
+        jBGerenciarTurmas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jBGerenciarTurmas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBGerenciarTurmasActionPerformed(evt);
             }
         });
 
-        jButton1.setText("X");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jBSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetopoo/Icones/seta-para-a-esquerda.png"))); // NOI18N
+        jBSair.setFocusPainted(false);
+        jBSair.setMaximumSize(new java.awt.Dimension(16, 16));
+        jBSair.setMinimumSize(new java.awt.Dimension(16, 16));
+        jBSair.setPreferredSize(new java.awt.Dimension(22, 22));
+        jBSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jBSairActionPerformed(evt);
             }
         });
 
@@ -151,48 +182,45 @@ public class JFDiretor extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(67, Short.MAX_VALUE)
-                        .addComponent(jPanelDiretor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(60, 60, 60)
-                        .addComponent(jBGerenciarProfessores, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(105, 105, 105)
-                        .addComponent(jBGerenciarAlunos, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jBGerenciarDisciplinas, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(173, 173, 173)
                         .addComponent(jBPalestras, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(133, 133, 133)
+                        .addComponent(jBGerenciarDisciplinas, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jBSair, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(51, 51, 51)
+                        .addComponent(jBGerenciarProfessores, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(114, 114, 114)
+                        .addComponent(jBGerenciarAlunos, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(121, 121, 121)
-                        .addComponent(jBGerenciarTurmas, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(64, 64, 64))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addContainerGap())
+                        .addComponent(jBGerenciarTurmas, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(280, 280, 280)
+                        .addComponent(jPanelDiretor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(102, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(57, 57, 57)
+                .addContainerGap()
+                .addComponent(jBSair, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(9, 9, 9)
                 .addComponent(jPanelDiretor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jBGerenciarAlunos, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jBGerenciarDisciplinas, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jBGerenciarProfessores, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(74, 74, 74)
+                    .addComponent(jBGerenciarAlunos, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBGerenciarProfessores, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBGerenciarTurmas, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(68, 68, 68)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jBGerenciarTurmas, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jBPalestras, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(54, 54, 54)
-                .addComponent(jButton1)
-                .addContainerGap())
+                    .addComponent(jBPalestras, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBGerenciarDisciplinas, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(83, 83, 83))
         );
 
         pack();
@@ -242,10 +270,10 @@ public class JFDiretor extends javax.swing.JFrame {
         jfgerenciareventos.setVisible(true);
     }//GEN-LAST:event_jBPalestrasActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jBSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSairActionPerformed
         dispose();
         jflogin.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jBSairActionPerformed
 
     /**
      * @param args the command line arguments
@@ -288,7 +316,7 @@ public class JFDiretor extends javax.swing.JFrame {
     private javax.swing.JButton jBGerenciarProfessores;
     private javax.swing.JButton jBGerenciarTurmas;
     private javax.swing.JButton jBPalestras;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jBSair;
     private javax.swing.JLabel jLBemVindo;
     private javax.swing.JLabel jLIconeDiretor;
     private javax.swing.JLabel jLNomeUsuarioDiretor;
