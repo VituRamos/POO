@@ -180,7 +180,9 @@ public class JFAluno extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBSimuladosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSimuladosActionPerformed
-        // TODO add your handling code here:
+        dispose();
+        JFSimuladoAluno jfsimulado= new JFSimuladoAluno(Usuario);
+        jfsimulado.setVisible(true);
     }//GEN-LAST:event_jBSimuladosActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened

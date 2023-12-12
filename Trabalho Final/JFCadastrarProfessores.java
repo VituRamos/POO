@@ -70,6 +70,11 @@ public class JFCadastrarProfessores extends javax.swing.JFrame {
         });
 
         jCDisciplina.setToolTipText("");
+        jCDisciplina.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCDisciplinaActionPerformed(evt);
+            }
+        });
 
         jBVoltar.setText("Voltar");
         jBVoltar.addActionListener(new java.awt.event.ActionListener() {
@@ -180,6 +185,10 @@ public class JFCadastrarProfessores extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_formWindowOpened
+
+    private void jCDisciplinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCDisciplinaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCDisciplinaActionPerformed
 
     /**
      * @param args the command line arguments

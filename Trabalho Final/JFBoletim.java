@@ -131,6 +131,7 @@ public class JFBoletim extends javax.swing.JFrame {
 
     private void jBSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSairActionPerformed
         dispose();
+        jfaluno= new JFAluno(Usuario);
         jfaluno.setVisible(true);
     }//GEN-LAST:event_jBSairActionPerformed
 

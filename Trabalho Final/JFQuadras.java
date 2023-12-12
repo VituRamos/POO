@@ -19,9 +19,16 @@ public class JFQuadras extends javax.swing.JFrame {
     String Usuario;
     private DefaultTableModel tableModel;
     Quadras quadra= new Quadras();
+    
     public JFQuadras(String Usuario){
         this.Usuario=Usuario;
         initComponents();
+        tableModel = new DefaultTableModel();
+        tableModel.addColumn("Nome da Turma");
+        tableModel.addColumn("Data");
+        tableModel.addColumn("Horario");
+        jTable1.setModel(tableModel);
+        tableModel.setRowCount(0);
     }
     public JFQuadras() {
         initComponents();
@@ -32,6 +39,8 @@ public class JFQuadras extends javax.swing.JFrame {
         jTable1.setModel(tableModel);
         tableModel.setRowCount(0);
     }
+    
+    
     public void limpaTabela(){
         ((DefaultTableModel) jTable1.getModel()).setRowCount(0);
     }
