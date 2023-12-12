@@ -13,6 +13,7 @@ public class JFProfessor extends javax.swing.JFrame {
     String Usuario;
     JFNotas jfnotas;
     JFLogin jflogin = new JFLogin();
+    JFQuadras jfquadras;
     
     public JFProfessor(String Usuario) {
         initComponents();
@@ -144,6 +145,11 @@ public class JFProfessor extends javax.swing.JFrame {
         jBNotasSimulados.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jBNotasSimulados.setIconTextGap(25);
         jBNotasSimulados.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jBNotasSimulados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBNotasSimuladosActionPerformed(evt);
+            }
+        });
 
         jPanelProfessor.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.lightGray, java.awt.Color.white, java.awt.Color.gray, java.awt.Color.lightGray));
 
@@ -267,7 +273,9 @@ public class JFProfessor extends javax.swing.JFrame {
     }//GEN-LAST:event_jBNotasActionPerformed
 
     private void jBQuadraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBQuadraActionPerformed
-        // TODO add your handling code here:
+        jfquadras= new JFQuadras(Usuario);
+        dispose();
+        jfquadras.setVisible(true);
     }//GEN-LAST:event_jBQuadraActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -300,6 +308,12 @@ public class JFProfessor extends javax.swing.JFrame {
         dispose();
         jflogin.setVisible(true);
     }//GEN-LAST:event_jBSairActionPerformed
+
+    private void jBNotasSimuladosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNotasSimuladosActionPerformed
+        JFSimulados jfsimulados= new JFSimulados(Usuario);
+        dispose();
+        jfsimulados.setVisible(true);
+    }//GEN-LAST:event_jBNotasSimuladosActionPerformed
 
     /**
      * @param args the command line arguments

@@ -92,6 +92,23 @@ public class Eventos {
         
     }
     
+    public ArrayList<Eventos> removerEventos(String nomeTurma){
+
+        ArrayList<Eventos> EventosRemover = new ArrayList<>();
+
+        for (Eventos elementoTurma: Eventos.ListaEventos) {
+            if (elementoTurma.getNomeTurma().equalsIgnoreCase(nomeTurma)){
+                EventosRemover.add(elementoTurma);
+            }
+        }
+
+        Eventos.ListaEventos.removeAll(EventosRemover);
+
+        System.out.println("\nRemocao efetuada com sucesso ✔️\n");
+
+        return Eventos.ListaEventos;
+    }
+    
     
     
     public String getNomeTurma() {

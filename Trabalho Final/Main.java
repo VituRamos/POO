@@ -17,7 +17,7 @@ public class Main {
         //gerenciarDisciplinas.cadastrarDisciplina("Ingles");
         //gerenciarDisciplinas.exibirDisciplinas();
 
-        gerenciarProfessores.cadastrarProfessor("Joao","46484012806","Matematica");
+        gerenciarProfessores.cadastrarProfessor("Joao","123","Matematica");
         //gerenciarProfessores.cadastrarProfessor("Clodovil","46484012809","Matematica");
         //gerenciarProfessores.consultarProfessores("46484012806");
         //gerenciarProfessores.exibirProfessores();

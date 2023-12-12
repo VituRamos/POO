@@ -11,7 +11,50 @@ import java.util.ArrayList;
  * @author User
  */
 public class Quadras {
+    private String nomeTurma;
+    private String data;
+    private String horario;
+    
+    
+    static ArrayList<Quadras> ListaQuadras = new ArrayList<>();
+    
+    public Quadras(String nomeTurma, String data, String horario){
+        setNomeTurma(nomeTurma);
+        setData(data);
+        setHorario(horario);
+        
+    }
+    public Quadras(){
+        
+    }
+    
+    public void cadastrarQuadras(String nomeTurma, String data,String horario){
+        
+        Quadras quadra= new Quadras(nomeTurma,data,horario);
+        
+        
+        Quadras.ListaQuadras.add(quadra);
+        
+    }
+    
+    public ArrayList<Quadras> removerQuadras(String nomeTurma){
 
+        ArrayList<Quadras> QuadrasRemover = new ArrayList<>();
+
+        for (Quadras elementoTurma: Quadras.ListaQuadras) {
+            if (elementoTurma.getNomeTurma().equalsIgnoreCase(nomeTurma)){
+                QuadrasRemover.add(elementoTurma);
+            }
+        }
+
+        Quadras.ListaQuadras.removeAll(QuadrasRemover);
+
+        System.out.println("\nRemocao efetuada com sucesso ✔️\n");
+
+        return Quadras.ListaQuadras;
+    }
+    
+    
     /**
      * @return the nomeTurma
      */
@@ -57,30 +100,9 @@ public class Quadras {
     /**
      * @return the professor
      */
-    public String getProfessor() {
-        return professor;
-    }
-
-    /**
-     * @param professor the professor to set
-     */
-    public void setProfessor(String professor) {
-        this.professor = professor;
-    }
+   
     
-    private String nomeTurma;
-    private String data;
-    private String horario;
-    private String professor;
-    
-     static ArrayList<Eventos> ListaEventos = new ArrayList<>();
-    
-    public Quadras(String nomeTurma, String data, String horario, String professor){
-        setNomeTurma(nomeTurma);
-        setData(data);
-        setHorario(horario);
-        setProfessor(professor);
-    }
+   
     
     
     

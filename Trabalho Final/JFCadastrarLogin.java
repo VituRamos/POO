@@ -129,7 +129,7 @@ public class JFCadastrarLogin extends javax.swing.JFrame {
     private void jBCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelarActionPerformed
 
         dispose();
-        jflogin.setVisible(true);
+        
         
     }//GEN-LAST:event_jBCancelarActionPerformed
 

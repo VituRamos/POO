@@ -65,6 +65,12 @@ public class JFCadastrarEvento extends javax.swing.JFrame {
             }
         });
 
+        jCTurma.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCTurmaActionPerformed(evt);
+            }
+        });
+
         buttonGroup.add(jCBPalestra);
         jCBPalestra.setText("Palestra");
 
@@ -240,6 +246,10 @@ public class JFCadastrarEvento extends javax.swing.JFrame {
     private void jFTHorarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFTHorarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jFTHorarioActionPerformed
+
+    private void jCTurmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCTurmaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCTurmaActionPerformed
 
     /**
      * @param args the command line arguments

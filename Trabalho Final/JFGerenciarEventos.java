@@ -57,6 +57,7 @@ public class JFGerenciarEventos extends javax.swing.JFrame {
         jBCadastrar = new javax.swing.JButton();
         jBVoltar = new javax.swing.JButton();
         jLEventos = new javax.swing.JLabel();
+        jBRemover = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -99,6 +100,13 @@ public class JFGerenciarEventos extends javax.swing.JFrame {
         jLEventos.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLEventos.setText("EVENTOS");
 
+        jBRemover.setText("Remover");
+        jBRemover.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBRemoverActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -106,9 +114,11 @@ public class JFGerenciarEventos extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(182, 182, 182)
+                        .addGap(138, 138, 138)
                         .addComponent(jBCadastrar)
-                        .addGap(149, 149, 149)
+                        .addGap(69, 69, 69)
+                        .addComponent(jBRemover)
+                        .addGap(49, 49, 49)
                         .addComponent(jBVoltar))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(58, 58, 58)
@@ -129,7 +139,8 @@ public class JFGerenciarEventos extends javax.swing.JFrame {
                 .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBCadastrar)
-                    .addComponent(jBVoltar))
+                    .addComponent(jBVoltar)
+                    .addComponent(jBRemover))
                 .addContainerGap(40, Short.MAX_VALUE))
         );
 
@@ -170,6 +181,16 @@ public class JFGerenciarEventos extends javax.swing.JFrame {
         
     }//GEN-LAST:event_formWindowOpened
 
+    private void jBRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRemoverActionPerformed
+        Eventos evento=new Eventos();
+        int linhaselecionada = jTableEventos.getSelectedRow();
+        
+        String NomeTurma = jTableEventos.getValueAt(linhaselecionada, 0).toString();
+        ((DefaultTableModel) jTableEventos.getModel()).removeRow(linhaselecionada);
+        
+        evento.removerEventos(NomeTurma);
+    }//GEN-LAST:event_jBRemoverActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -207,6 +228,7 @@ public class JFGerenciarEventos extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBCadastrar;
+    private javax.swing.JButton jBRemover;
     private javax.swing.JButton jBVoltar;
     private javax.swing.JLabel jLEventos;
     private javax.swing.JScrollPane jScrollPane1;
