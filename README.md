@@ -1,5 +1,3 @@
 # POO
 
-Vitu - Gerenciar Disciplinas
-
-Manin - Gerenciar Alunos
+Desenvolvimento de aplicação de gerenciamento escolar.
