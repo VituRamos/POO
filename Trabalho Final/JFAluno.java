@@ -60,6 +60,11 @@ public class JFAluno extends javax.swing.JFrame {
         jBBoletim.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jBBoletim.setIconTextGap(25);
         jBBoletim.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jBBoletim.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBBoletimActionPerformed(evt);
+            }
+        });
 
         jBSimulados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetopoo/Icones/lista-de-controle (1).png"))); // NOI18N
         jBSimulados.setText("Simulados");
@@ -206,6 +211,12 @@ public class JFAluno extends javax.swing.JFrame {
         dispose();
         jflogin.setVisible(true);
     }//GEN-LAST:event_jBSairActionPerformed
+
+    private void jBBoletimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBoletimActionPerformed
+        JFBoletim jfboletim = new JFBoletim(Usuario);
+        dispose();
+        jfboletim.setVisible(true);
+    }//GEN-LAST:event_jBBoletimActionPerformed
 
     /**
      * @param args the command line arguments

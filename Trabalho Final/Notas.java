@@ -2,6 +2,7 @@ package projetopoo;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 public class Notas {
 
@@ -35,31 +36,35 @@ public class Notas {
     public Float getNota(){
         return this.nota;
     }
+    public void setNota(Float nota){
+        this.nota = nota;
+    }
     public Alunos getAluno(){
-        return this.aluno;
+        return aluno;
     }
     public String getAlunoNome(){
-        return this.aluno.getNomeAluno();
+        return aluno.getNomeAluno();
     }
     public String getAlunoRA(){
-        return this.aluno.getRA();
+        return aluno.getRA();
+    }
+    public String getProfessorCPF(){
+        return professor.getCPF();
     }
 
 
     //Cadastrar
     public void cadastrarNotas(String CPF, String RA, Float Nota){
 
-        //System.out.println("-------------------Cadastro de Notas-------------------\n");
-
-        //String raAluno = "";
-        //Float nota = null;
-
-        //System.out.print("Digite o RA do aluno: ");
-        //raAluno = scanner.next();
-
-        //System.out.print("Digite a nota do aluno: ");
-        //nota = Float.valueOf(scanner.next());
-
+        for (Notas elementosNota : ListaNotas) {
+            
+            if (elementosNota.getAlunoRA().equals(RA) && elementosNota.getProfessorCPF().equals(CPF)) {
+                JOptionPane.showMessageDialog(null, "Nota ja cadastrada para este aluno.", "Cadastro de Notas", JOptionPane.ERROR_MESSAGE);
+                return;
+            } 
+        }
+        
+        
         Alunos retornoAluno = gerenciarAlunos.consultarAlunos(RA);
         Professores retornoProfessor = gerenciarProfessores.consultarProfessores(CPF);
 
@@ -69,9 +74,7 @@ public class Notas {
         }else{
             Notas notas = new Notas(retornoAluno, Nota, retornoProfessor);
             ListaNotas.add(notas);
-
-            System.out.println("-------------------------------------------------\n");
-            System.out.println("\nNota inserida com sucesso ✔️\n");
+            JOptionPane.showMessageDialog(null, "Nota cadastrada com sucesso!.", "Cadastro de Notas", JOptionPane.INFORMATION_MESSAGE);
         }
 
 
@@ -101,6 +104,15 @@ public class Notas {
     }
 
 
+    public void alterarNotas(String RA, float nota){
+        
+        for (Notas elementoNotas : ListaNotas) {
+            if (elementoNotas.aluno.getRA().equals(RA)) {
+                elementoNotas.setNota(nota);
+            }
+        }
+        
+    }
 
 
 

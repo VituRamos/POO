@@ -40,6 +40,10 @@ public class JFNotas extends javax.swing.JFrame {
         tableModel.setRowCount(0);
     }
 
+    public void limpaTabela(){
+        ((DefaultTableModel) jTableNotas.getModel()).setRowCount(0);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -51,14 +55,17 @@ public class JFNotas extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableNotas = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        jBAdicionar = new javax.swing.JButton();
+        jBAlterar = new javax.swing.JButton();
+        jBVoltar = new javax.swing.JButton();
+        jLNotas = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
@@ -77,24 +84,29 @@ public class JFNotas extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTableNotas);
 
-        jButton1.setText("Adicionar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jBAdicionar.setText("Adicionar");
+        jBAdicionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jBAdicionarActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Alterar");
-
-        jButton3.setText("Voltar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jBAlterar.setText("Alterar");
+        jBAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jBAlterarActionPerformed(evt);
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel1.setText("NOTAS");
+        jBVoltar.setText("Voltar");
+        jBVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBVoltarActionPerformed(evt);
+            }
+        });
+
+        jLNotas.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLNotas.setText("NOTAS");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -107,43 +119,45 @@ public class JFNotas extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(114, 114, 114)
-                        .addComponent(jButton1)
+                        .addComponent(jBAdicionar)
                         .addGap(47, 47, 47)
-                        .addComponent(jButton2)
+                        .addComponent(jBAlterar)
                         .addGap(47, 47, 47)
-                        .addComponent(jButton3)))
+                        .addComponent(jBVoltar)))
                 .addContainerGap(69, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+                .addComponent(jLNotas)
                 .addGap(249, 249, 249))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(52, 52, 52)
-                .addComponent(jLabel1)
+                .addComponent(jLNotas)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(jBAdicionar)
+                    .addComponent(jBAlterar)
+                    .addComponent(jBVoltar))
                 .addContainerGap(46, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jBAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAdicionarActionPerformed
         jfcadastrarnotas = new JFCadastrarNotas(Usuario);
         dispose();
         jfcadastrarnotas.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jBAdicionarActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         this.setLocationRelativeTo(null);
+        
+        limpaTabela();
         
         ArrayList<Notas> NotasProfessor = new ArrayList<>();
         NotasProfessor = notas.consultarNotas(Usuario);
@@ -154,11 +168,33 @@ public class JFNotas extends javax.swing.JFrame {
         
     }//GEN-LAST:event_formWindowOpened
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void jBVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBVoltarActionPerformed
         jfprofessor = new JFProfessor(Usuario);
         dispose();
         jfprofessor.setVisible(true);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_jBVoltarActionPerformed
+
+    private void jBAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAlterarActionPerformed
+        
+        int linhaselecionada = jTableNotas.getSelectedRow();
+        String RA = jTableNotas.getValueAt(linhaselecionada, 1).toString();
+        
+        JFAlterarNotas jfalterarnotas = new JFAlterarNotas(Usuario, RA);
+        jfalterarnotas.setVisible(true);
+    }//GEN-LAST:event_jBAlterarActionPerformed
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        this.setLocationRelativeTo(null);
+        
+        limpaTabela();
+        
+        ArrayList<Notas> NotasProfessor = new ArrayList<>();
+        NotasProfessor = notas.consultarNotas(Usuario);
+        
+        for (Notas elementoNotas: NotasProfessor) {
+            tableModel.addRow(new Object[]{elementoNotas.getAlunoNome(),elementoNotas.getAlunoRA(),elementoNotas.getNota()});
+        }
+    }//GEN-LAST:event_formWindowActivated
 
     /**
      * @param args the command line arguments
@@ -196,10 +232,10 @@ public class JFNotas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton jBAdicionar;
+    private javax.swing.JButton jBAlterar;
+    private javax.swing.JButton jBVoltar;
+    private javax.swing.JLabel jLNotas;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableNotas;
     // End of variables declaration//GEN-END:variables

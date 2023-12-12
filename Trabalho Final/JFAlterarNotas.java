@@ -4,25 +4,26 @@
  */
 package projetopoo;
 
-import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author victo
  */
-public class JFCadastrarNotas extends javax.swing.JFrame {
+public class JFAlterarNotas extends javax.swing.JFrame {
 
     String Usuario;
-    JFNotas jfnotas;
+    String RA;
     Notas notas = new Notas();
     
-    public JFCadastrarNotas(String Usuario) {
+    
+    public JFAlterarNotas(String Usuario, String RA) {
         initComponents();
         this.Usuario = Usuario;
+        this.RA = RA;
     }
     
-    public JFCadastrarNotas() {
+    public JFAlterarNotas(){
         initComponents();
     }
     
@@ -33,8 +34,6 @@ public class JFCadastrarNotas extends javax.swing.JFrame {
         }
         
     }
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -47,12 +46,10 @@ public class JFCadastrarNotas extends javax.swing.JFrame {
 
         jLNota = new javax.swing.JLabel();
         jTFNota = new javax.swing.JTextField();
-        jCBAluno = new javax.swing.JComboBox<>();
         jBConfirmar = new javax.swing.JButton();
         jBCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -60,8 +57,6 @@ public class JFCadastrarNotas extends javax.swing.JFrame {
         });
 
         jLNota.setText("Nota");
-
-        jCBAluno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Aluno" }));
 
         jBConfirmar.setText("Confirmar");
         jBConfirmar.addActionListener(new java.awt.event.ActionListener() {
@@ -82,110 +77,74 @@ public class JFCadastrarNotas extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(97, 97, 97)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(77, 77, 77)
                         .addComponent(jLNota)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTFNota, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jCBAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(56, 56, 56)
-                .addComponent(jBConfirmar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
-                .addComponent(jBCancelar)
-                .addGap(54, 54, 54))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(51, 51, 51)
+                        .addComponent(jBConfirmar)
+                        .addGap(41, 41, 41)
+                        .addComponent(jBCancelar)))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(86, 86, 86)
-                .addComponent(jCBAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(52, 52, 52)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLNota)
                     .addComponent(jTFNota, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addGap(55, 55, 55)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBConfirmar)
                     .addComponent(jBCancelar))
-                .addGap(49, 49, 49))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        
-        this.setLocationRelativeTo(null);
-        ArrayList<String> TurmasProfessor = new ArrayList<>();
-        
-        for (Turmas elementoTurmas: Turmas.ListaTurmas) {
-            
-            for (Professores elementoProfessor: elementoTurmas.getListaProfessores()) {
-                
-                if (elementoProfessor.getCPF().equals(Usuario)) {
-                    TurmasProfessor.add(elementoTurmas.getNomeTurma());
-                }
-                
-            }
-            
-            for (String elementoTurmasProfessor : TurmasProfessor) {
-                
-                if (elementoTurmasProfessor.equals(elementoTurmas.getNomeTurma())) {
-                    
-                    for (Alunos elementoAlunos : elementoTurmas.getListaAlunos()) {
-                        
-                        jCBAluno.addItem(elementoAlunos.getRA());
-                        
-                    }
-                    
-                }
-                
-            }
-            
-        }
-        
-        if (jCBAluno.getItemCount()>1) {
-            jCBAluno.removeItemAt(0);
-        }
-        
-    }//GEN-LAST:event_formWindowOpened
-
-    private void jBCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelarActionPerformed
-        jfnotas = new JFNotas(Usuario);
-        dispose();
-        jfnotas.setVisible(true);
-    }//GEN-LAST:event_jBCancelarActionPerformed
-
     private void jBConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConfirmarActionPerformed
-        
-        String RA = jCBAluno.getSelectedItem().toString();
+
         float Nota= 0.0f;
+        System.out.print(Usuario);
+        System.out.print(RA);
         
         try {
-            
+
             String NotaString = jTFNota.getText();
-            
+
             if (NotaString.matches("\\d+(\\.\\d+)?")) {
-                
+
                 Nota = Float.parseFloat(NotaString);
-                notas.cadastrarNotas(Usuario, RA, Nota);
-                
+                notas.alterarNotas(RA, Nota);
+                JOptionPane.showMessageDialog(null, "Nota alterada com sucesso!", "Alterar Notas", JOptionPane.INFORMATION_MESSAGE);
+
             }else{
                 throw new ExceptionPersonalizada("Erro nota\n");
             }
-            
+
         } catch (ExceptionPersonalizada e) {
             System.out.print("Exception Personalizada: "+e.getMessage());
             JOptionPane.showMessageDialog(null, "Erro ao cadastrar nota. Insira apenas numeros.", "Cadastro de Notas", JOptionPane.ERROR_MESSAGE);
 
         }
-        
+
         jTFNota.setText("");
-        
+        dispose();
+
     }//GEN-LAST:event_jBConfirmarActionPerformed
+
+    private void jBCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelarActionPerformed
+        dispose();
+    }//GEN-LAST:event_jBCancelarActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        this.setLocationRelativeTo(null);
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
@@ -204,20 +163,20 @@ public class JFCadastrarNotas extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JFCadastrarNotas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFAlterarNotas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JFCadastrarNotas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFAlterarNotas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JFCadastrarNotas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFAlterarNotas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JFCadastrarNotas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFAlterarNotas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JFCadastrarNotas().setVisible(true);
+                new JFAlterarNotas().setVisible(true);
             }
         });
     }
@@ -225,7 +184,6 @@ public class JFCadastrarNotas extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBCancelar;
     private javax.swing.JButton jBConfirmar;
-    private javax.swing.JComboBox<String> jCBAluno;
     private javax.swing.JLabel jLNota;
     private javax.swing.JTextField jTFNota;
     // End of variables declaration//GEN-END:variables

@@ -15,6 +15,7 @@ public class JFBoletim extends javax.swing.JFrame {
     Boletim boletim= new Boletim();
     String Usuario;
     private DefaultTableModel tableModel;
+    
     public JFBoletim(String Usuario) {
        initComponents();
        this.Usuario = Usuario;
